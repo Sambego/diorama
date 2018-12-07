@@ -2,6 +2,16 @@
 
 Diorama is a set of React.js components to easily create an attractive and customisable presentation. All content will adjust to the available width of the screen, so you won't have some clipped slides when forced to present with a projector of lesser quality.
 
+Why would you create a presentation in React.js instead of powerpoint, keynote or Google Slides? You can add live demos, straight in your slides. Since every slide is a react component, there's no limit to what you can do.
+
+You can navigate trough the slides by using the arrow keys on your keyboard, using a presenter remote\* or swiping trough the slides on a mobile phone.
+
+\* Tested with a Logitech R400 and Logitech Spotlight
+
+## Demo
+
+Check out the demo right here https://sambego.github.io/diorama-demo/
+
 ## Installing
 
 ```
@@ -38,6 +48,23 @@ const MyApp = () => {
 
 ## Available components
 
+### Summary
+
+- [Deck](#deck)
+- [Slide](#slide)
+- [Title](#title)
+- [Subtitle](#subtitle)
+- [Text](#text)
+- [Quote](#quote)
+- [Image](#image)
+- [List](#list)
+- [Columns](#columns)
+- [Code](#code)
+- [Browser](#browser)
+- [Dec](#deck)
+- [Dec](#deck)
+- [Dec](#deck)
+
 ### Deck
 
 This is the root element of each presentation, it will handle navigation trough the slides.
@@ -66,15 +93,11 @@ The slide component will accept a `note` attribute, which will display presenter
 
 ### Title
 
-Displays a nice big title.
-
 ```javascript
 <Title>This is a title</Title>
 ```
 
 ### Subtitle
-
-Displays a smaller sub-title.
 
 ```javascript
 <Subtitle>This is a subtitle</Subtitle>
@@ -82,22 +105,23 @@ Displays a smaller sub-title.
 
 ### Text
 
-You can use this component to add some text to slides.
-
 ```javascript
 <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
 ```
 
-### Image
+### Quote
 
-If you want to add an image to a slide, use the Image component.
+```javascript
+<Quote quotee="Sam Bellen">Lorem ipsum dolor sit amet</Quote>
+```
+
+### Image
 
 ```javascript
 <Image src={image} alt="image description" />
 ```
 
 The `Image` component accepts a few attributes.
-
 Using the `full` attribute, the image will take up all available space.
 
 ```javascript
@@ -110,9 +134,32 @@ Using the `color="#fff"` attribute, the image will have an overlay color.
 <Image src={image} alt="image description" color="tomato" />
 ```
 
+### List
+
+#### Ordered lists
+
+```javascript
+<List ordered>
+  <li>one</li>
+  <li>two</li>
+  <li>three</li>
+  <li>four</li>
+</List>
+```
+
+#### Unordered lists
+
+```javascript
+<List>
+  <li>one</li>
+  <li>two</li>
+  <li>three</li>
+  <li>four</li>
+</List>
+```
+
 ### Columns
 
-If you want to display content in columns, the `<Columns />` component has got your back.
 You can add as many child nodes as you want and they will be displayed in nice equal columns.
 
 ```javascript
@@ -124,9 +171,14 @@ You can add as many child nodes as you want and they will be displayed in nice e
 
 ### Code
 
-If you want to display a code snippet, there's a `<Code />` element available. This component has 2 attributes, `code` which is a string of the code to display, and `lang` which default to `javascript`;
+This component accepts 2 attributes, `code` which is a string of the code to display, and `lang` which default to `javascript`;
 
 ```javascript
-const codeExample = 'const foo = "bar";\nconsole.log(foo);'
-<ColumnsCode code={codeExample} />
+<ColumnsCode code={'const foo = "bar";\nconsole.log(foo);'} />
+```
+
+### Browser
+
+```javascript
+<Browser url="http://talks.sambego.be" />
 ```
