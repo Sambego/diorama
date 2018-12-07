@@ -1,0 +1,66 @@
+.browser {
+  width: 80vw;
+  height: 80vh;
+  background: var(--color-gray-7);
+  border-radius: 0.5rem;
+  box-shadow: 1.5rem 1.5rem 5rem 0 rgba(27, 43, 52, 0.2),
+    -1.5rem -1.5rem 5rem 0 rgba(27, 43, 52, 0.2), -1.5rem 1.5rem 5rem 0 rgba(27, 43, 52, 0.2),
+    1.5rem -1.5rem 5rem 0 rgba(27, 43, 52, 0.2);
+}
+
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  padding: 1rem 2rem;
+  text-align: left;
+  background: var(--color-gray-medium);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.traffic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 7rem;
+}
+
+.red,
+.yellow,
+.green {
+  align-self: center;
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0 0.5rem 0 0;
+  border-radius: 50%;
+}
+
+.red {
+  background: var(--color-red);
+}
+
+.yellow {
+  background: var(--color-yellow);
+}
+
+.green {
+  background: var(--color-green);
+}
+
+.address {
+  width: 100%;
+  padding: 1rem 2rem;
+  margin: 0 2rem 0 0;
+  background: #fff;
+  border: none;
+  border-radius: 2rem;
+  outline: 0;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.iframe {
+  width: 100%;
+  height: calc(100% - 6rem);
+}

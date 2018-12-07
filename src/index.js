@@ -10,7 +10,20 @@ import Footer from './components/Footer';
 import Highlight from './components/Highlight';
 import Quote from './components/Quote';
 import List from './components/List';
+import Browser from './components/Browser';
 
 export {
-  Deck, Slide, Title, Subtitle, Columns, Image, Text, Code, Footer, Highlight, Quote, List,
+  Deck,
+  Slide,
+  Title,
+  Subtitle,
+  Columns,
+  Image,
+  Text,
+  Code,
+  Footer,
+  Highlight,
+  Quote,
+  List,
+  Browser,
 };
