@@ -171,7 +171,7 @@ You can add as many child nodes as you want and they will be displayed in nice e
 
 ### Code
 
-This component accepts 2 attributes, `code` which is a string of the code to display, and `lang` which default to `javascript`;
+This component accepts 2 attributes, `code` which is a string of the code to display, and `lang` which default to `javascript`.
 
 ```javascript
 <ColumnsCode code={'const foo = "bar";\nconsole.log(foo);'} />
