@@ -2,7 +2,8 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="code"
+  className="code diorama-code "
+  style={Object {}}
 >
   <header
     className="header"

@@ -8,10 +8,12 @@ export default class Deck extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
+    footer: PropTypes.node,
   };
 
   static defaultProps = {
     className: '',
+    footer: undefined,
   };
 
   state = {
@@ -66,7 +68,12 @@ export default class Deck extends Component {
   };
 
   render() {
-    const { className } = this.props;
-    return <div className={`diorama diorama-deck ${className}`}>{this.renderSlide()}</div>;
+    const { className, footer } = this.props;
+    return (
+      <div className={`diorama diorama-deck ${className}`}>
+        {footer && footer}
+        {this.renderSlide()}
+      </div>
+    );
   }
 }

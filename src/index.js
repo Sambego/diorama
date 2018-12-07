@@ -6,7 +6,8 @@ import Columns from './components/Columns';
 import Image from './components/Image';
 import Text from './components/Text';
 import Code from './components/Code';
+import Footer from './components/Footer';
 
 export {
-  Deck, Slide, Title, Subtitle, Columns, Image, Text, Code,
+  Deck, Slide, Title, Subtitle, Columns, Image, Text, Code, Footer,
 };

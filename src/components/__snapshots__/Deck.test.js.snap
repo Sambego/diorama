@@ -4,7 +4,9 @@ exports[`renders correctly 1`] = `
 <div
   className="diorama diorama-deck "
 >
-  <div>
+  <div
+    index={0}
+  >
     Slide 1
   </div>
 </div>
