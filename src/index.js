@@ -8,7 +8,8 @@ import Text from './components/Text';
 import Code from './components/Code';
 import Footer from './components/Footer';
 import Highlight from './components/Highlight';
+import Quote from './components/Quote';
 
 export {
-  Deck, Slide, Title, Subtitle, Columns, Image, Text, Code, Footer, Highlight,
+  Deck, Slide, Title, Subtitle, Columns, Image, Text, Code, Footer, Highlight, Quote,
 };

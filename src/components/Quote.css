@@ -1,0 +1,40 @@
+.quote {
+  margin: 0 5rem;
+
+  font-weight: 700;
+  font-size: 5vw;
+
+  &::before {
+    content: '“';
+  }
+
+  &::after {
+    content: '”';
+  }
+}
+
+.cite {
+  margin: 1rem 5rem 0 auto;
+  padding-right: 5rem;
+  font-size: 3vw;
+  text-align: right;
+
+  &::before {
+    content: '-';
+  }
+
+  &::after {
+    content: '-';
+  }
+}
+
+@media (min-width: 600px) {
+  .quote {
+    margin: 0 10rem;
+  }
+
+  .cite {
+    margin: 1rem 10rem 0 auto;
+    padding-right: 5rem;
+  }
+}
