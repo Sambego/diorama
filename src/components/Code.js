@@ -6,8 +6,10 @@ import 'prismjs/themes/prism.css';
 import styles from './Code.css';
 
 /* eslint-disable react/no-danger */
-const Code = ({ code, lang }) => (
-  <div className={styles.code}>
+const Code = ({
+  code, lang, style, className,
+}) => (
+  <div className={`${styles.code} diorama-code ${className}`} style={style}>
     <header className={styles.header}>
       <span className={styles.red} />
       <span className={styles.yellow} />
@@ -28,12 +30,16 @@ const Code = ({ code, lang }) => (
 /* eslint-enable react/no-danger */
 
 Code.propTypes = {
+  className: PropTypes.string,
   code: PropTypes.string.isRequired,
   lang: PropTypes.string,
+  style: PropTypes.shape({}),
 };
 
 Code.defaultProps = {
+  className: '',
   lang: 'javascript',
+  style: {},
 };
 
 export default Code;
