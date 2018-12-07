@@ -5,7 +5,8 @@ import Subtitle from './components/Subtitle';
 import Columns from './components/Columns';
 import Image from './components/Image';
 import Text from './components/Text';
+import Code from './components/Code';
 
 export {
-  Deck, Slide, Title, Subtitle, Columns, Image, Text,
+  Deck, Slide, Title, Subtitle, Columns, Image, Text, Code,
 };

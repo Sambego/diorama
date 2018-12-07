@@ -113,3 +113,12 @@ You can add as many child nodes as you want and they will be displayed in nice e
   <div>Column 2</div>
 </Columns>
 ```
+
+### Code
+
+If you want to display a code snippet, there's a `<Code />` element available. This component has 2 attributes, `code` which is a string of the code to display, and `lang` which default to `javascript`;
+
+```javascript
+const codeExample = 'const foo = "bar";\nconsole.log(foo);'
+<ColumnsCode code={codeExample} />
+```

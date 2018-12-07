@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="code"
+>
+  <header
+    className="header"
+  >
+    <span
+      className="red"
+    />
+    <span
+      className="yellow"
+    />
+    <span
+      className="green"
+    />
+    <span
+      className="lang"
+    >
+      javascript
+    </span>
+  </header>
+  <div
+    className="snippet"
+  >
+    <pre>
+      <code
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<span class=\\"token keyword\\">const</span> <span class=\\"token function-variable function\\">foo</span> <span class=\\"token operator\\">=</span> <span class=\\"token punctuation\\">(</span><span class=\\"token punctuation\\">)</span> <span class=\\"token operator\\">=></span> <span class=\\"token string\\">'bar'</span><span class=\\"token punctuation\\">;</span>",
+          }
+        }
+      />
+    </pre>
+  </div>
+</div>
+`;

@@ -1,0 +1,136 @@
+.code {
+  padding: 1rem;
+  min-width: 50%;
+  max-width: 80%;
+
+  background: var(--color-gray-dark);
+
+  border-radius: 0.5rem;
+  box-shadow: 1.5rem 1.5rem 5rem 0 rgba(var(--color-gray-dark), 0.2),
+    -1.5rem -1.5rem 5rem 0 rgba(var(--color-gray-dark), 0.2),
+    -1.5rem 1.5rem 5rem 0 rgba(var(--color-gray-dark), 0.2),
+    1.5rem -1.5rem 5rem 0 rgba(var(--color-gray-dark), 0.2);
+
+  text-align: left;
+
+  code {
+    display: block;
+  }
+
+  pre {
+    padding: 0;
+    margin: 0;
+    background: none;
+    text-align: left;
+  }
+}
+
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+.red,
+.yellow,
+.green {
+  align-self: center;
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin: 0 0.5rem 0 0;
+  border-radius: 50%;
+}
+
+.red {
+  background: var(--color-red);
+}
+
+.yellow {
+  background: var(--color-yellow);
+}
+
+.green {
+  background: var(--color-green);
+}
+
+.lang {
+  display: inline-block;
+  flex: 1;
+  text-align: center;
+  color: white;
+}
+
+.snippet {
+  padding: 2rem 1rem 1rem;
+  code,
+  pre {
+    color: var(--color-gray-6);
+    font-size: 2vw;
+    line-height: 120%;
+  }
+}
+
+/* Overwrite the ugly standard prism styles */
+span[class~='token'] {
+  background: none !important;
+}
+
+span[class~='comment'],
+span[class~='prolog'],
+span[class~='doctype'],
+span[class~='cdata'] {
+  color: var(--color-gray-3) !important;
+}
+
+span[class~='tag'] {
+  color: var(--color-gray-4) !important;
+}
+
+span[class~='punctuation'] {
+  color: var(--color-gray-5) !important;
+}
+
+span[class~='operator'],
+span[class~='boolean'],
+span[class~='number'],
+span[class~='attr-name'] {
+  color: var(--color-orange) !important;
+}
+
+span[class~='property'] {
+  color: var(--color-yellow) !important;
+}
+
+span[class~='string'],
+span[class~='entity'],
+span[class~='url'],
+span[class~='statement'],
+span[class~='regex'],
+span[class~='atrule'] {
+  color: var(--color-teal) !important;
+}
+
+span[class~='selector'] {
+  color: var(--color-pink) !important;
+}
+
+span[class~='attr']-value,
+span[class~='keyword'],
+span[class~='control'],
+span[class~='directive'],
+span[class~='unit'] {
+  color: var(--color-green) !important;
+}
+
+span[class~='placeholder'],
+span[class~='variable'],
+span[class~='function'] {
+  color: var(--color-blue) !important;
+}
+
+span[class~='important'] {
+  color: var(--color-red) !important;
+}

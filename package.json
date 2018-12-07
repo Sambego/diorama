@@ -62,7 +62,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "keycode": "^2.2.0"
+    "keycode": "^2.2.0",
+    "prismjs": "^1.15.0"
   },
   "jest": {
     "moduleNameMapper": {
