@@ -21,3 +21,9 @@ body {
   font-size: 1.6rem;
   font-family: 'montserrat', Helvetica, Arial, sans-serif;
 }
+
+a {
+  color: var(--color-green);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-green);
+}
