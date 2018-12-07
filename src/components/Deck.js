@@ -7,6 +7,11 @@ import '../styles/styles.css';
 export default class Deck extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+  };
+
+  static defaultProps = {
+    className: '',
   };
 
   state = {
@@ -59,6 +64,7 @@ export default class Deck extends Component {
   };
 
   render() {
-    return <div className="diorama diorama-deck">{this.renderSlide()}</div>;
+    const { className } = this.props;
+    return <div className={`diorama diorama-deck ${className}`}>{this.renderSlide()}</div>;
   }
 }

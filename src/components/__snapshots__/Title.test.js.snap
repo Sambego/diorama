@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <h1
-  className="title diorama-title"
+  className="title diorama-title "
   style={Object {}}
 >
   Title content

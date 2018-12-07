@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <p
-  className="text diorama-text"
+  className="text diorama-text "
   style={Object {}}
 >
   Text content

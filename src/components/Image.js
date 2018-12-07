@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import styles from './Image.css';
 
 const Image = ({
-  alt, src, style, full, color,
+  alt, src, style, full, color, className,
 }) => {
   const containerClasses = classnames(
     styles.container,
@@ -17,6 +17,7 @@ const Image = ({
     styles.image,
     {
       [styles.full]: full,
+      [className]: className !== '',
     },
     'diorama-image',
   );
@@ -37,6 +38,7 @@ const Image = ({
 Image.propTypes = {
   alt: PropTypes.string.isRequired,
   color: PropTypes.string,
+  className: PropTypes.string,
   full: PropTypes.bool,
   style: PropTypes.shape({}),
   src: PropTypes.string.isRequired,
@@ -44,6 +46,7 @@ Image.propTypes = {
 
 Image.defaultProps = {
   color: undefined,
+  className: '',
   full: false,
   style: {},
 };
