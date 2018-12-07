@@ -1,5 +1,6 @@
 import React, { Component, cloneElement } from 'react';
 import PropTypes from 'prop-types';
+import Swipe from 'react-easy-swipe';
 import Keyboard from '../services/Keyboard';
 
 import '../styles/styles.css';
@@ -19,6 +20,13 @@ export default class Deck extends Component {
   state = {
     slide: Number(window.location.pathname.split('/')[1]) || 0,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.getPreviousSlide = ::this.getPreviousSlide;
+    this.getNextSlide = ::this.getNextSlide;
+  }
 
   componentWillMount() {
     this.KeyboardLeftListener = Keyboard.on('left', () => this.getPreviousSlide());
@@ -70,10 +78,12 @@ export default class Deck extends Component {
   render() {
     const { className, footer } = this.props;
     return (
-      <div className={`diorama diorama-deck ${className}`}>
-        {footer && footer}
-        {this.renderSlide()}
-      </div>
+      <Swipe onSwipeLeft={this.getNextSlide} onSwipeRight={this.getPreviousSlide} allowMouseEvents>
+        <div className={`diorama diorama-deck ${className}`}>
+          {footer && footer}
+          {this.renderSlide()}
+        </div>
+      </Swipe>
     );
   }
 }

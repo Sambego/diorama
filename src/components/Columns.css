@@ -1,5 +1,6 @@
 .columns {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   min-height: 400px;
@@ -14,4 +15,10 @@
   width: 100%;
   height: 100%;
   text-align: center;
+}
+
+@media (min-width: 600px) {
+  .columns {
+    flex-direction: row;
+  }
 }

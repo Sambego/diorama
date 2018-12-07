@@ -2,12 +2,19 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="diorama diorama-deck "
+  onMouseDown={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+  tolerance={0}
 >
   <div
-    index={0}
+    className="diorama diorama-deck "
   >
-    Slide 1
+    <div
+      index={0}
+    >
+      Slide 1
+    </div>
   </div>
 </div>
 `;

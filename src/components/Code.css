@@ -1,15 +1,14 @@
 .code {
   padding: 1rem;
-  min-width: 50%;
+  min-width: 80%;
   max-width: 80%;
 
   background: var(--color-gray-dark);
 
+  box-shadow: 1.5rem 1.5rem 5rem 0 rgba(27, 43, 52, 0.2),
+    -1.5rem -1.5rem 5rem 0 rgba(27, 43, 52, 0.2), -1.5rem 1.5rem 5rem 0 rgba(27, 43, 52, 0.2),
+    1.5rem -1.5rem 5rem 0 rgba(27, 43, 52, 0.2);
   border-radius: 0.5rem;
-  box-shadow: 1.5rem 1.5rem 5rem 0 rgba(var(--color-gray-dark), 0.2),
-    -1.5rem -1.5rem 5rem 0 rgba(var(--color-gray-dark), 0.2),
-    -1.5rem 1.5rem 5rem 0 rgba(var(--color-gray-dark), 0.2),
-    1.5rem -1.5rem 5rem 0 rgba(var(--color-gray-dark), 0.2);
 
   text-align: left;
 
@@ -70,6 +69,13 @@
     color: var(--color-gray-6);
     font-size: 2vw;
     line-height: 120%;
+  }
+}
+
+@media (min-width: 600px) {
+  .code {
+    min-width: 50%;
+    max-width: 80%;
   }
 }
 
