@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <blockquote
+    className="quote diorama-title "
+    style={Object {}}
+  >
+    Nice quote
+  </blockquote>,
+  <cite
+    className="cite"
+  >
+    Sam Bellen
+  </cite>,
+]
+`;

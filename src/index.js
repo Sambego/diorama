@@ -9,7 +9,8 @@ import Code from './components/Code';
 import Footer from './components/Footer';
 import Highlight from './components/Highlight';
 import Quote from './components/Quote';
+import List from './components/List';
 
 export {
-  Deck, Slide, Title, Subtitle, Columns, Image, Text, Code, Footer, Highlight, Quote,
+  Deck, Slide, Title, Subtitle, Columns, Image, Text, Code, Footer, Highlight, Quote, List,
 };
