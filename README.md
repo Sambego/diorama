@@ -56,6 +56,14 @@ Even though the `<Deck />` component accepts all valid React nodes as children, 
 </Deck>
 ```
 
+The slide component will accept a `note` attribute, which will display presenter notes in the console. Most browser support showing the console in a separate window, so you can move it to your secondary screen.
+
+```javascript
+<Deck>
+  <Slide note="These are the presenter notes">Slide content</Slide>
+</Deck>
+```
+
 ### Title
 
 Displays a nice big title.

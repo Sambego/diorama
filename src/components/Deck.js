@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import Keyboard from '../services/Keyboard';
 
@@ -60,7 +60,9 @@ export default class Deck extends Component {
     const { slide } = this.state;
     const { children } = this.props;
 
-    return children[slide];
+    return cloneElement(children[slide], {
+      index: slide,
+    });
   };
 
   render() {
