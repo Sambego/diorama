@@ -61,9 +61,6 @@ const MyApp = () => {
 - [Columns](#columns)
 - [Code](#code)
 - [Browser](#browser)
-- [Dec](#deck)
-- [Dec](#deck)
-- [Dec](#deck)
 
 ### Deck
 
