@@ -179,6 +179,8 @@ This component accepts 2 attributes, `code` which is a string of the code to dis
 
 ### Browser
 
+> Note: Loading mixed content might not work when not using https
+
 ```javascript
 <Browser url="http://talks.sambego.be" />
 ```

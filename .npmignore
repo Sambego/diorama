@@ -1,0 +1,11 @@
+# .npmignore
+
+__mocks__
+src
+.babelrc
+.eslintrc
+.eslintignore
+.gitignore
+.travis.yml
+postcss.config.js
+webpack.config.babel.js
