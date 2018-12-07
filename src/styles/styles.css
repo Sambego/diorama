@@ -1,0 +1,23 @@
+@import 'colors';
+@import 'font';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'montserrat', Helvetica, Arial, sans-serif;
+}
