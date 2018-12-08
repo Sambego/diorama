@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import style from './Navigation.css';
+import styles from './Navigation.css';
 
-const Navigation = ({ onPreviousSlide, onNextSlide }) => (
-  <nav className={`${style.navigation} diorama-navigation`}>
-    <ul className={style.list}>
-      <li className={style.item}>
-        <button onClick={onPreviousSlide} className={`${style.previous} diorama-previous`}>
+const Navigation = ({
+  onPreviousSlide, onNextSlide, className, style,
+}) => (
+  <nav className={`${styles.navigation} diorama-navigation ${className}`} style={style}>
+    <ul className={styles.list}>
+      <li className={styles.item}>
+        <button
+          onClick={onPreviousSlide}
+          className={`${styles.previous} diorama-previous`}
+          type="button"
+        >
           Previous
         </button>
       </li>
-      <li className={style.item}>
-        <button onClick={onNextSlide} className={`${style.next} diorama-next`}>
+      <li className={styles.item}>
+        <button onClick={onNextSlide} className={`${styles.next} diorama-next`} type="button">
           Next
         </button>
       </li>
@@ -21,8 +27,15 @@ const Navigation = ({ onPreviousSlide, onNextSlide }) => (
 );
 
 Navigation.propTypes = {
+  className: PropTypes.string,
   onPreviousSlide: PropTypes.func.isRequired,
   onNextSlide: PropTypes.func.isRequired,
+  style: PropTypes.shape({}),
+};
+
+Navigation.defaultProps = {
+  className: '',
+  style: {},
 };
 
 export default Navigation;

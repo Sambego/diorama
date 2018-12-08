@@ -2,7 +2,8 @@
 
 exports[`renders correctly 1`] = `
 <nav
-  className="navigation diorama-navigation"
+  className="navigation diorama-navigation "
+  style={Object {}}
 >
   <ul
     className="list"
@@ -13,6 +14,7 @@ exports[`renders correctly 1`] = `
       <button
         className="previous diorama-previous"
         onClick={[Function]}
+        type="button"
       >
         Previous
       </button>
@@ -23,6 +25,7 @@ exports[`renders correctly 1`] = `
       <button
         className="next diorama-next"
         onClick={[Function]}
+        type="button"
       >
         Next
       </button>
