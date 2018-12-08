@@ -4,7 +4,7 @@ Diorama is a set of React.js components to easily create an attractive and custo
 
 Why would you create a presentation in React.js instead of powerpoint, keynote or Google Slides? You can add live demos, straight in your slides. Since every slide is a react component, there's no limit to what you can do.
 
-You can navigate trough the slides by using the arrow keys on your keyboard, using a presenter remote\* or swiping trough the slides on a mobile phone.
+You can navigate trough the slides by using the arrow keys on your keyboard, using a presenter remote\* or swiping trough the slides on a mobile phone. By adding the `navigation` property to the `<deck />` component you can enable an onscreen navigation.
 
 \* Tested with a Logitech R400 and Logitech Spotlight
 
@@ -64,10 +64,18 @@ const MyApp = () => {
 
 ### Deck
 
-This is the root element of each presentation, it will handle navigation trough the slides.
+This is the root element of each presentation, it will handle navigation trough the slides. It accepts 2 properties.
+
+- `navigation`: when this property is present, an onscreen navigation will render on top of every slide (previous and next arrow);
+- `footer`: Any valid react element, which will render with every slide. by default there is a `<Footer />` available.
 
 ```javascript
-<Deck>...</Deck>
+<Deck navigation>...</Deck>
+```
+
+```javascript
+const footer = <Footer left="@sambego" right="http://sambego.be" />
+<Deck footer={footer}>...</Deck>
 ```
 
 ### Slide

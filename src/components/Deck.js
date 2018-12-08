@@ -2,6 +2,7 @@ import React, { Component, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import Swipe from 'react-easy-swipe';
 import Keyboard from '../services/Keyboard';
+import Navigation from './Navigation';
 
 import '../styles/styles.css';
 
@@ -10,11 +11,13 @@ export default class Deck extends Component {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     footer: PropTypes.node,
+    navigation: PropTypes.bool,
   };
 
   static defaultProps = {
     className: '',
     footer: undefined,
+    navigation: false,
   };
 
   state = {
@@ -76,11 +79,14 @@ export default class Deck extends Component {
   };
 
   render() {
-    const { className, footer } = this.props;
+    const { className, footer, navigation } = this.props;
     return (
       <Swipe onSwipeLeft={this.getNextSlide} onSwipeRight={this.getPreviousSlide} allowMouseEvents>
         <div className={`diorama diorama-deck ${className}`}>
           {footer && footer}
+          {navigation && (
+            <Navigation onPreviousSlide={this.getPreviousSlide} onNextSlide={this.getNextSlide} />
+          )}
           {this.renderSlide()}
         </div>
       </Swipe>

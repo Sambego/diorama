@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<nav
+  className="navigation diorama-navigation"
+>
+  <ul
+    className="list"
+  >
+    <li
+      className="item"
+    >
+      <button
+        className="previous diorama-previous"
+        onClick={[Function]}
+      >
+        Previous
+      </button>
+    </li>
+    <li
+      className="item"
+    >
+      <button
+        className="next diorama-next"
+        onClick={[Function]}
+      >
+        Next
+      </button>
+    </li>
+  </ul>
+</nav>
+`;
