@@ -55,6 +55,7 @@ const MyApp = () => {
 - [Title](#title)
 - [Subtitle](#subtitle)
 - [Text](#text)
+- [Highlight](#highlight)
 - [Quote](#quote)
 - [Image](#image)
 - [List](#list)
@@ -112,6 +113,13 @@ The slide component will accept a `note` attribute, which will display presenter
 
 ```javascript
 <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+```
+
+### Highlight
+
+```javascript
+<Title>This it a <Highlight>title</Highlight></Text>
+<Text>Lorem ipsum <Highlight>dolor</Highlight> sit amet, consectetur adipiscing elit.</Text>
 ```
 
 ### Quote
@@ -182,10 +190,87 @@ This component accepts 2 attributes, `code` which is a string of the code to dis
 <Code code={'const foo = "bar";\nconsole.log(foo);'} />
 ```
 
+> The code is formatted using the amazing [Prism.js library](https://prismjs.com/). If you need a language which is not included in the Prism.js default set of languages, you can import it **after** you've imported the `<Code />` component.
+
+```javascript
+import { Slide, Code } from '@sambego/diorama';
+import 'prismjs/components/prism-bash.min.js';
+
+const CodeExample = () => (
+  <Slide>
+    <Code code="npm install @sambego/diorama" lang="bash" />
+  </Slide>
+);
+```
+
 ### Browser
 
 > Note: Loading mixed content might not work when not using https
 
 ```javascript
 <Browser url="https://talks.sambego.be" />
+```
+
+## Customisation
+
+By default, all components are good lookingShould you want customise the look of a component, you can easily add some custom styles.
+
+### Overwrite the color variables
+
+The easiest way to get some color customisation is to overwrite the color CSS variables. The default color scheme is based on oceanic next. These are the default color variables.
+
+```css
+:root {
+  --color-gray-0: #1b2b34;
+  --color-gray-1: #343d46;
+  --color-gray-2: #4f5b66;
+  --color-gray-3: #65737e;
+  --color-gray-4: #a7adba;
+  --color-gray-5: #c0c5ce;
+  --color-gray-6: #cdd3de;
+  --color-gray-7: #d8dee9;
+
+  --color-gray-dark: var(--color-gray-0);
+  --color-gray-medium: var(--color-gray-4);
+  --color-gray-light: var(--color-gray-7);
+
+  --color-red: #ec5f67;
+  --color-orange: #f99157;
+  --color-yellow: #fac863;
+  --color-green: #99c794;
+  --color-teal: #5fb3b3;
+  --color-blue: #6699cc;
+  --color-pink: #c594c5;
+  --color-brown: #ab7967;
+
+  --color-primary: var(--color-green);
+  --color-seconday: var(--color-teal);
+
+  --color-danger: var(--color-red);
+  --color-success: var(--color-green);
+  --color-info: var(--color-blue);
+  --color-warning: var(--color-yellow);
+}
+```
+
+### Use the `.diorama-*` classes
+
+All components have a `.diorama-*` class, which you can use to add extra CSS to them.
+
+Eg. `.diorama-slide`, `.diorama-title`, `.diorama-code`, ...
+
+### Add an extra CSS class
+
+You can add extra CSS classes by simply passing a `className` property to a component.
+
+```javascript
+<Title className="fancy-css-class">...</Title>
+```
+
+### Add inline styles
+
+It is also possible to pass some inline styles to each component.
+
+```javascript
+<Title style={{color: 'tomato'}}>...</title>
 ```
