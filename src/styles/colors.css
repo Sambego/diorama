@@ -21,6 +21,9 @@
   --color-pink: #c594c5;
   --color-brown: #ab7967;
 
+  --color-primary: var(--color-green);
+  --color-seconday: var(--color-teal);
+
   --color-danger: var(--color-red);
   --color-success: var(--color-green);
   --color-info: var(--color-blue);
