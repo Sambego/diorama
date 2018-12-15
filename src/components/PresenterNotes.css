@@ -1,0 +1,44 @@
+.presenter {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-gray-0);
+}
+
+.slides {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(((40rem / 16) * 9) + 4rem);
+}
+
+.slide,
+.next {
+  width: 40rem;
+  height: calc((40rem / 16) * 9);
+  padding: 0;
+  margin: 2rem;
+  background: white;
+  border: 2px solid var(--color-gray-4);
+}
+
+.notes {
+  display: block;
+  height: 100%;
+  padding: 2rem;
+  font-size: 4rem;
+  background: var(--color-gray-2);
+  color: white;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  min-height: 5.5rem;
+  background: var(--color-gray-0);
+  font-size: 3rem;
+  color: white;
+}

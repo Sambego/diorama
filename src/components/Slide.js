@@ -4,35 +4,29 @@ import PropTypes from 'prop-types';
 import styles from './Slide.css';
 
 const Slide = ({
-  children, style, className, note, index,
-}) => {
-  if (note) {
-    /* eslint-disable no-console */
-    console.log('----------------------------------------------------------------');
-    console.log(`Note ${index + 1}: ${note}`);
-    console.log('----------------------------------------------------------------');
-    /* eslint-enable no-console */
-  }
-
-  return (
-    <div style={style} className={`${styles.slide} diorama-slide ${className}`}>
+  children, style, className, scale,
+}) => (
+  <div style={style} className={`${styles.slide} diorama-slide ${className}`}>
+    <div className={`diorama-content ${styles.content}`} style={{ transform: `scale(${scale})` }}>
       {children}
     </div>
-  );
-};
+  </div>
+);
 
+/* eslint-disable react/no-unused-prop-types */
 Slide.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  index: PropTypes.number,
-  note: PropTypes.string,
+  notes: PropTypes.string,
+  scale: PropTypes.string,
   style: PropTypes.shape({}),
 };
+/* eslint-enable react/no-unused-prop-types */
 
 Slide.defaultProps = {
   className: '',
-  index: 0,
-  note: undefined,
+  notes: undefined,
+  scale: '1',
   style: {},
 };
 

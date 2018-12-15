@@ -1,9 +1,12 @@
-import React, { Component, cloneElement } from 'react';
+import React, { Component, cloneElement, createRef } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Swipe from 'react-easy-swipe';
 import Keyboard from '../services/Keyboard';
 import Navigation from './Navigation';
+import PresenterNotes from './PresenterNotes';
 
+import styles from './Deck.css';
 import '../styles/styles.css';
 
 export default class Deck extends Component {
@@ -24,18 +27,22 @@ export default class Deck extends Component {
     slide: Number(window.location.pathname.split('/')[1]) || 0,
   };
 
+  presenterElementRef = createRef();
+
   constructor(props) {
     super(props);
 
     this.getPreviousSlide = ::this.getPreviousSlide;
     this.getNextSlide = ::this.getNextSlide;
+    this.openPresenterNotes = ::this.openPresenterNotes;
   }
 
   componentWillMount() {
-    this.KeyboardLeftListener = Keyboard.on('left', () => this.getPreviousSlide());
-    this.KeyboardRightListener = Keyboard.on('right', () => this.getNextSlide());
-    this.KeyboardUpListener = Keyboard.on('page up', () => this.getPreviousSlide());
-    this.KeyboardDownListener = Keyboard.on('page down', () => this.getNextSlide());
+    this.KeyboardLeftListener = Keyboard.on('left', this.getPreviousSlide);
+    this.KeyboardRightListener = Keyboard.on('right', this.getNextSlide);
+    this.KeyboardUpListener = Keyboard.on('page up', this.getPreviousSlide);
+    this.KeyboardDownListener = Keyboard.on('page down', this.getNextSlide);
+    this.KeyboardOpenPresenterListener = Keyboard.on('p', this.openPresenterNotes);
   }
 
   componentWillUnmount() {
@@ -43,10 +50,12 @@ export default class Deck extends Component {
     Keyboard.off(this.KeyboardRightListener);
     Keyboard.off(this.KeyboardUpListener);
     Keyboard.off(this.KeyboardDownListener);
+    Keyboard.off(this.KeyboardOpenPresenterListener);
   }
 
   getPreviousSlide() {
     const { slide } = this.state;
+    const { children } = this.props;
 
     if (slide === 0) {
       return;
@@ -55,6 +64,7 @@ export default class Deck extends Component {
     this.setState(state => ({ ...state, slide: slide - 1 }));
 
     window.history.pushState(undefined, undefined, slide - 1);
+    this.updatePresenterNotes(children[slide - 1], children[slide]);
   }
 
   getNextSlide() {
@@ -67,22 +77,87 @@ export default class Deck extends Component {
 
     this.setState(state => ({ ...state, slide: slide + 1 }));
     window.history.pushState(undefined, undefined, slide + 1);
+    this.updatePresenterNotes(children[slide + 1], children[slide + 2]);
   }
 
-  renderSlide = () => {
+  openPresenterNotes() {
+    const { slide } = this.state;
+    const { children } = this.props;
+
+    this.presenterWindow = window.open(
+      '',
+      'Presenter notes',
+      'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=1000,height=600',
+    );
+
+    if (!this.presenterWindow || this.presenterWindow.closed) {
+      /* eslint-disable no-alert */
+      window.alert('Please allow popups to open the presenter window.');
+      /* eslint-enable no-alert */
+    } else {
+      this.renderPresenterNotes(children[slide], slide, children[slide + 1], children.length);
+    }
+  }
+
+  updatePresenterNotes() {
+    const { slide } = this.state;
+    const { children } = this.props;
+
+    if (this.presenterElementRef && this.presenterElementRef.current) {
+      this.presenterElementRef.current.setState(state => ({
+        ...state,
+        slide: children[slide],
+        current: slide + 1,
+        notes: children[slide].props.notes,
+        next: children[slide + 1],
+      }));
+    }
+  }
+
+  renderPresenterNotes(currentSlide, currentSlideIndex, nextSlide, totalSlides) {
+    if (this.presenterWindow) {
+      const presenterNotesContainer = this.presenterWindow.document.createElement('div');
+      const mainStyles = document.querySelectorAll('link[type="text/css"], style');
+
+      ReactDOM.render(
+        <PresenterNotes
+          slide={currentSlide}
+          next={nextSlide}
+          notes={currentSlide.props.notes}
+          current={currentSlideIndex + 1}
+          total={totalSlides}
+          ref={this.presenterElementRef}
+        />,
+        presenterNotesContainer,
+      );
+
+      [].forEach.call(mainStyles, (style) => {
+        this.presenterWindow.document.head.innerHTML += style.outerHTML;
+      });
+
+      this.presenterWindow.document.body.append(presenterNotesContainer);
+    }
+  }
+
+  renderSlide() {
     const { slide } = this.state;
     const { children } = this.props;
 
     return cloneElement(children[slide], {
       index: slide,
     });
-  };
+  }
 
   render() {
     const { className, footer, navigation } = this.props;
     return (
-      <Swipe onSwipeLeft={this.getNextSlide} onSwipeRight={this.getPreviousSlide} allowMouseEvents>
-        <div className={`diorama diorama-deck ${className}`}>
+      <Swipe
+        className={`diorama-swipe-container ${styles.swipe}`}
+        onSwipeLeft={this.getNextSlide}
+        onSwipeRight={this.getPreviousSlide}
+        allowMouseEvents
+      >
+        <div className={`diorama diorama-deck ${styles.deck} ${className}`}>
           {footer && footer}
           {navigation && (
             <Navigation onPreviousSlide={this.getPreviousSlide} onNextSlide={this.getNextSlide} />

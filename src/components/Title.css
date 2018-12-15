@@ -1,12 +1,7 @@
 .title {
-  margin: 0 5rem;
+  margin: 0;
+  max-width: 80vw;
   font-size: 6vw;
   font-weight: 700;
   text-transform: uppercase;
-}
-
-@media (min-width: 600px) {
-  .title {
-    margin: 0 10rem;
-  }
 }

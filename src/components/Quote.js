@@ -7,10 +7,10 @@ const Quote = ({
   children, quotee, style, className,
 }) => (
   <>
-    <blockquote style={style} className={`${styles.quote} diorama-title ${className}`}>
+    <blockquote style={style} className={`${styles.quote} diorama-quote ${className}`}>
       {children}
     </blockquote>
-    {quotee && <cite className={styles.cite}>{quotee}</cite>}
+    {quotee && <cite className={`${styles.cite} diorama-cite`}>{quotee}</cite>}
   </>
 );
 
