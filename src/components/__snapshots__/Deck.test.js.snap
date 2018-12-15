@@ -2,13 +2,14 @@
 
 exports[`renders correctly 1`] = `
 <div
+  className="diorama-swipe-container swipe"
   onMouseDown={[Function]}
   onTouchEnd={[Function]}
   onTouchStart={[Function]}
   tolerance={0}
 >
   <div
-    className="diorama diorama-deck "
+    className="diorama diorama-deck deck "
   >
     <div
       index={0}
