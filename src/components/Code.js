@@ -7,7 +7,7 @@ import styles from './Code.css';
 
 /* eslint-disable react/no-danger */
 const Code = ({
-  code, lang, style, className,
+  code, lang, lines, style, className,
 }) => (
   <div className={`${styles.code} diorama-code ${className}`} style={style}>
     <header className={styles.header}>
@@ -17,7 +17,7 @@ const Code = ({
       <span className={styles.lang}>{lang}</span>
     </header>
     <div className={styles.snippet}>
-      <pre>
+      <pre data-line={lines}>
         <code
           dangerouslySetInnerHTML={{
             __html: Prism.highlight(code, Prism.languages[lang], Prism.languages[lang]),
@@ -32,6 +32,7 @@ const Code = ({
 Code.propTypes = {
   className: PropTypes.string,
   code: PropTypes.string.isRequired,
+  lines: PropTypes.string,
   lang: PropTypes.string,
   style: PropTypes.shape({}),
 };
@@ -40,6 +41,7 @@ Code.defaultProps = {
   className: '',
   lang: 'javascript',
   style: {},
+  lines: '',
 };
 
 export default Code;
