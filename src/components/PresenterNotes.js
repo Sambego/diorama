@@ -35,6 +35,18 @@ export default class PresenterNotes extends Component {
     window.setInterval(this.updateTimer, 1000);
   }
 
+  componentDidUpdate() {
+    const images = document.querySelectorAll('img');
+
+    [].forEach.call(images, (image) => {
+      if (image.src.indexOf('://')) {
+        return;
+      }
+
+      image.src = `http://localhost:3000${image.src}`;
+    });
+  }
+
   updateTimer() {
     const { timerTotal } = this.state;
     const pad = toPad => (`${toPad}`.length > 1 ? `${toPad}` : `0${toPad}`);
