@@ -12,12 +12,14 @@ export default class Deck extends Component {
     className: PropTypes.string,
     footer: PropTypes.node,
     navigation: PropTypes.bool,
+    swipeToChange: PropTypes.bool,
   };
 
   static defaultProps = {
     className: '',
     footer: undefined,
     navigation: false,
+    swipeToChange: true,
   };
 
   state = {
@@ -79,9 +81,19 @@ export default class Deck extends Component {
   };
 
   render() {
-    const { className, footer, navigation } = this.props;
+    const {
+      className,
+      footer,
+      navigation,
+      swipeToChange,
+    } = this.props;
+
     return (
-      <Swipe onSwipeLeft={this.getNextSlide} onSwipeRight={this.getPreviousSlide} allowMouseEvents>
+      <Swipe
+        onSwipeLeft={swipeToChange ? this.getNextSlide : undefined}
+        onSwipeRight={swipeToChange ? this.getPreviousSlide : undefined}
+        allowMouseEvents
+      >
         <div className={`diorama diorama-deck ${className}`}>
           {footer && footer}
           {navigation && (
