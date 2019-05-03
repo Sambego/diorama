@@ -31,6 +31,7 @@ export default class Deck extends Component {
 
     this.getPreviousSlide = ::this.getPreviousSlide;
     this.getNextSlide = ::this.getNextSlide;
+    this.getSlide = ::this.getSlide;
   }
 
   componentWillMount() {
@@ -69,6 +70,12 @@ export default class Deck extends Component {
 
     this.setState(state => ({ ...state, slide: slide + 1 }));
     window.history.pushState(undefined, undefined, slide + 1);
+    this.updatePresenterNotes(children[slide + 1], children[slide + 2]);
+  }
+
+  getSlide(slideId) {
+    this.setState(state => ({ ...state, slide: slideId }));
+    window.history.pushState(undefined, undefined, slideId);
   }
 
   renderSlide = () => {
@@ -77,15 +84,13 @@ export default class Deck extends Component {
 
     return cloneElement(children[slide], {
       index: slide,
+      navigate: this.getSlide,
     });
   };
 
   render() {
     const {
-      className,
-      footer,
-      navigation,
-      swipeToChange,
+      className, footer, navigation, swipeToChange,
     } = this.props;
 
     return (
