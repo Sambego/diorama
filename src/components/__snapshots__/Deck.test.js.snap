@@ -12,6 +12,7 @@ exports[`renders correctly 1`] = `
   >
     <div
       index={0}
+      navigate={[Function]}
     >
       Slide 1
     </div>

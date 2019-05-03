@@ -70,7 +70,6 @@ export default class Deck extends Component {
 
     this.setState(state => ({ ...state, slide: slide + 1 }));
     window.history.pushState(undefined, undefined, slide + 1);
-    this.updatePresenterNotes(children[slide + 1], children[slide + 2]);
   }
 
   getSlide(slideId) {
