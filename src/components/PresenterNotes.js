@@ -43,7 +43,7 @@ export default class PresenterNotes extends Component {
         return;
       }
 
-      image.src = `http://localhost:3000${image.src}`;
+      image.src = `http://localhost:3000${image.src}`; // eslint-disable-line no-param-reassign
     });
   }
 

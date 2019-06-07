@@ -11,6 +11,7 @@ import Highlight from './components/Highlight';
 import Quote from './components/Quote';
 import List from './components/List';
 import Browser from './components/Browser';
+import Video from './components/Video';
 
 export {
   Deck,
@@ -26,4 +27,5 @@ export {
   Quote,
   List,
   Browser,
+  Video,
 };

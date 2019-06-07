@@ -1,7 +1,7 @@
 .code {
   padding: 1rem;
-  min-width: 80vh;
-  max-width: 80vh;
+  min-width: 80vw;
+  max-width: 80vw;
 
   background: var(--color-gray-dark);
 
@@ -74,8 +74,8 @@
 
 @media (min-width: 600px) {
   .code {
-    min-width: 50vh;
-    max-width: 80vh;
+    min-width: 50vw;
+    max-width: 80vw;
   }
 }
 
