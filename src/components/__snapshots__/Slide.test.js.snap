@@ -7,11 +7,6 @@ exports[`renders correctly 1`] = `
 >
   <div
     className="diorama-content content"
-    style={
-      Object {
-        "transform": "scale(1)",
-      }
-    }
   >
     Slide content
   </div>
