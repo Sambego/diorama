@@ -72,7 +72,7 @@ export default class PresenterNotes extends Component {
       'current slide',
       renderToString(
         cloneElement(slide, {
-          className: style.miniature,
+          className: 'diorama-presenter-preview',
         }),
       ),
     );
@@ -80,7 +80,7 @@ export default class PresenterNotes extends Component {
       'next slide',
       renderToString(
         cloneElement(next, {
-          className: style.miniature,
+          className: 'diorama-presenter-preview',
         }),
       ),
     );
