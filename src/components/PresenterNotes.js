@@ -11,6 +11,7 @@ export default class PresenterNotes extends Component {
     slide: PropTypes.node.isRequired,
     next: PropTypes.node,
     parentStyles: PropTypes.objectOf(PropTypes.any),
+    origin: PropTypes.string.isRequired,
   };
   /* eslint-enable react/no-unused-prop-types */
 
@@ -31,16 +32,9 @@ export default class PresenterNotes extends Component {
     window.setInterval(this.updateTimer, 1000);
   }
 
-  componentDidUpdate() {
-    const images = document.querySelectorAll('img');
-
-    [].forEach.call(images, (image) => {
-      if (image.src.indexOf('://')) {
-        return;
-      }
-
-      image.src = `http://localhost:3000${image.src}`; // eslint-disable-line no-param-reassign
-    });
+  injectOrigin(htmlString) {
+    const { origin } = this.props;
+    return htmlString.replace(/src="([^"]*)"/gi, (match, media) => `src="${origin}${media}"`);
   }
 
   updateTimer() {
@@ -58,10 +52,13 @@ export default class PresenterNotes extends Component {
 
   renderIframe(title, content) {
     const { parentStyles } = this.props;
+
     return (
       <iframe
         title={title}
-        srcDoc={[...[...parentStyles].map(parentStyle => parentStyle.outerHTML), content].join('')}
+        srcDoc={this.injectOrigin(
+          [...[...parentStyles].map(parentStyle => parentStyle.outerHTML), content].join(''),
+        )}
         className={style.slide}
       />
     );

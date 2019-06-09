@@ -151,6 +151,12 @@ export default class Deck extends Component {
           total={totalSlides}
           ref={this.presenterElementRef}
           parentStyles={mainStyles}
+          origin={
+            `${window.location.protocol
+            }//${
+              window.location.hostname
+            }${window.location.port ? `:${window.location.port}` : ''}`
+          }
         />,
         presenterNotesContainer,
       );
