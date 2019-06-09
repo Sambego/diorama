@@ -16,6 +16,7 @@ export default class Deck extends Component {
     footer: PropTypes.node,
     navigation: PropTypes.bool,
     swipeToChange: PropTypes.bool,
+    presenterNotes: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -23,6 +24,7 @@ export default class Deck extends Component {
     footer: undefined,
     navigation: false,
     swipeToChange: true,
+    presenterNotes: false,
   };
 
   state = {
@@ -45,11 +47,14 @@ export default class Deck extends Component {
     this.KeyboardRightListener = Keyboard.on('right', this.getNextSlide);
     this.KeyboardUpListener = Keyboard.on('page up', this.getPreviousSlide);
     this.KeyboardDownListener = Keyboard.on('page down', this.getNextSlide);
-    // this.KeyboardOpenPresenterListener = Keyboard.on('p', this.openPresenterNotes);
   }
 
   componentDidMount() {
-    this.openPresenterNotes();
+    const { presenterNotes } = this.props;
+
+    if (presenterNotes) {
+      this.openPresenterNotes();
+    }
   }
 
   componentWillUnmount() {
