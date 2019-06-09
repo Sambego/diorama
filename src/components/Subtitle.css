@@ -1,12 +1,7 @@
 .subtitle {
-  margin: 0 5rem;
+  margin: 0;
+  max-width: 80%;
   font-size: 4.5vw;
   font-weight: 700;
   text-transform: uppercase;
-}
-
-@media (min-width: 600px) {
-  .subtitle {
-    margin: 0 10rem;
-  }
 }

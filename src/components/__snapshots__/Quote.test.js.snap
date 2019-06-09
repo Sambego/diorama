@@ -3,13 +3,13 @@
 exports[`renders correctly 1`] = `
 Array [
   <blockquote
-    className="quote diorama-title "
+    className="quote diorama-quote "
     style={Object {}}
   >
     Nice quote
   </blockquote>,
   <cite
-    className="cite"
+    className="cite diorama-cite"
   >
     Sam Bellen
   </cite>,

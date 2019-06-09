@@ -6,7 +6,7 @@ exports[`renders correctly 1`] = `
   style={Object {}}
 >
   <header
-    className="header"
+    className="header diorama-code-header"
   >
     <span
       className="red"
@@ -24,7 +24,7 @@ exports[`renders correctly 1`] = `
     </span>
   </header>
   <div
-    className="snippet"
+    className="snippet diorama-code-snippet"
   >
     <pre>
       <code

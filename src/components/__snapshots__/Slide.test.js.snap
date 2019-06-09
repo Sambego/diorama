@@ -5,6 +5,10 @@ exports[`renders correctly 1`] = `
   className="slide diorama-slide "
   style={Object {}}
 >
-  Slide content
+  <div
+    className="diorama-content content"
+  >
+    Slide content
+  </div>
 </div>
 `;

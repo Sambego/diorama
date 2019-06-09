@@ -10,13 +10,13 @@ const Code = ({
   code, lang, style, className,
 }) => (
   <div className={`${styles.code} diorama-code ${className}`} style={style}>
-    <header className={styles.header}>
+    <header className={`${styles.header} diorama-code-header`}>
       <span className={styles.red} />
       <span className={styles.yellow} />
       <span className={styles.green} />
       <span className={styles.lang}>{lang}</span>
     </header>
-    <div className={styles.snippet}>
+    <div className={`${styles.snippet} diorama-code-snippet`}>
       <pre>
         <code
           dangerouslySetInnerHTML={{

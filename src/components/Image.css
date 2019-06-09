@@ -31,3 +31,7 @@
   height: 100%;
   mix-blend-mode: multiply;
 }
+
+.contain {
+  object-fit: contain;
+}

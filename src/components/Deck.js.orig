@@ -16,7 +16,6 @@ export default class Deck extends Component {
     footer: PropTypes.node,
     navigation: PropTypes.bool,
     swipeToChange: PropTypes.bool,
-    presenterNotes: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -24,7 +23,6 @@ export default class Deck extends Component {
     footer: undefined,
     navigation: false,
     swipeToChange: true,
-    presenterNotes: false,
   };
 
   state = {
@@ -38,8 +36,11 @@ export default class Deck extends Component {
 
     this.getPreviousSlide = ::this.getPreviousSlide;
     this.getNextSlide = ::this.getNextSlide;
-    this.getSlide = ::this.getSlide;
+<<<<<<< HEAD
     this.openPresenterNotes = ::this.openPresenterNotes;
+=======
+    this.getSlide = ::this.getSlide;
+>>>>>>> master
   }
 
   componentWillMount() {
@@ -47,14 +48,7 @@ export default class Deck extends Component {
     this.KeyboardRightListener = Keyboard.on('right', this.getNextSlide);
     this.KeyboardUpListener = Keyboard.on('page up', this.getPreviousSlide);
     this.KeyboardDownListener = Keyboard.on('page down', this.getNextSlide);
-  }
-
-  componentDidMount() {
-    const { presenterNotes } = this.props;
-
-    if (presenterNotes) {
-      this.openPresenterNotes();
-    }
+    this.KeyboardOpenPresenterListener = Keyboard.on('p', this.openPresenterNotes);
   }
 
   componentWillUnmount() {
@@ -89,25 +83,10 @@ export default class Deck extends Component {
 
     this.setState(state => ({ ...state, slide: slide + 1 }));
     window.history.pushState(undefined, undefined, slide + 1);
-  }
-
-  getSlide(slideId) {
-    this.setState(state => ({ ...state, slide: slideId }));
-    window.history.pushState(undefined, undefined, slideId);
-  }
-
-  renderSlide = () => {
-    const { slide } = this.state;
-    const { children } = this.props;
-
     this.updatePresenterNotes(children[slide + 1], children[slide + 2]);
+  }
 
-    return cloneElement(children[slide], {
-      index: slide,
-      navigate: this.getSlide,
-    });
-  };
-
+<<<<<<< HEAD
   openPresenterNotes() {
     const { slide } = this.state;
     const { children } = this.props;
@@ -115,7 +94,7 @@ export default class Deck extends Component {
     this.presenterWindow = window.open(
       '',
       'Presenter notes',
-      'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,width=1000,height=600',
+      'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=1000,height=600',
     );
 
     if (!this.presenterWindow || this.presenterWindow.closed) {
@@ -140,12 +119,6 @@ export default class Deck extends Component {
         next: children[slide + 1],
       }));
     }
-
-    if (this.presenterWindow) {
-      this.presenterWindow.document.title = `[ Presenter notes - slide ${slide + 1}/${
-        children.length
-      } ] - ${document.title}`;
-    }
   }
 
   renderPresenterNotes(currentSlide, currentSlideIndex, nextSlide, totalSlides) {
@@ -161,16 +134,9 @@ export default class Deck extends Component {
           current={currentSlideIndex + 1}
           total={totalSlides}
           ref={this.presenterElementRef}
-          parentStyles={mainStyles}
-          origin={`${window.location.protocol}//${window.location.hostname}${
-            window.location.port ? `:${window.location.port}` : ''
-          }`}
         />,
         presenterNotesContainer,
       );
-
-      this.presenterWindow.document.title = `[ Presenter notes - slide ${currentSlideIndex
-        + 1}/${totalSlides} ] - ${document.title}`;
 
       [].forEach.call(mainStyles, (style) => {
         this.presenterWindow.document.head.innerHTML += style.outerHTML;
@@ -181,6 +147,14 @@ export default class Deck extends Component {
   }
 
   renderSlide() {
+=======
+  getSlide(slideId) {
+    this.setState(state => ({ ...state, slide: slideId }));
+    window.history.pushState(undefined, undefined, slideId);
+  }
+
+  renderSlide = () => {
+>>>>>>> master
     const { slide } = this.state;
     const { children } = this.props;
 
@@ -197,12 +171,20 @@ export default class Deck extends Component {
 
     return (
       <Swipe
+<<<<<<< HEAD
         className={`diorama-swipe-container ${styles.swipe}`}
+        onSwipeLeft={this.getNextSlide}
+        onSwipeRight={this.getPreviousSlide}
+        allowMouseEvents
+      >
+        <div className={`diorama diorama-deck ${styles.deck} ${className}`}>
+=======
         onSwipeLeft={swipeToChange ? this.getNextSlide : undefined}
         onSwipeRight={swipeToChange ? this.getPreviousSlide : undefined}
         allowMouseEvents
       >
-        <div className={`diorama diorama-deck ${styles.deck} ${className}`}>
+        <div className={`diorama diorama-deck ${className}`}>
+>>>>>>> master
           {footer && footer}
           {navigation && (
             <Navigation onPreviousSlide={this.getPreviousSlide} onNextSlide={this.getNextSlide} />
