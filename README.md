@@ -65,13 +65,16 @@ const MyApp = () => {
 
 ### Deck
 
-This is the root element of each presentation, it will handle navigation trough the slides. It accepts 2 properties.
+This is the root element of each presentation, it will handle navigation trough the slides. It accepts some properties.
 
 - `navigation`: when this property is present, an onscreen navigation will render on top of every slide (previous and next arrow);
+- `presenterNotes`: Setting this property will open a new window with presenter notes on bootstrap or on reload.
 - `footer`: Any valid react element, which will render with every slide. by default there is a `<Footer />` available.
 
 ```javascript
-<Deck navigation>...</Deck>
+<Deck navigation presenterNotes>
+  ...
+</Deck>
 ```
 
 ```javascript
@@ -89,11 +92,11 @@ Even though the `<Deck />` component accepts all valid React nodes as children, 
 </Deck>
 ```
 
-The slide component will accept a `notes` attribute, which will display presenter notes in the console. Most browser support showing the console in a separate window, so you can move it to your secondary screen.
+The slide component will accept a `note` attribute, which will display presenter notes in the presenter notes window.
 
 ```javascript
 <Deck>
-  <Slide notes="These are the presenter notes">Slide content</Slide>
+  <Slide note="These are the presenter notes">Slide content</Slide>
 </Deck>
 ```
 
@@ -145,6 +148,28 @@ Using the `color="#fff"` attribute, the image will have an overlay color.
 
 ```javascript
 <Image src={image} alt="image description" color="tomato" />
+```
+
+By default the images will display using `object-fit: cover;`, this might cut of some of the top or sides. By setting the `contain` attribute they will display in completely.
+
+```javascript
+<Image src={image} alt="image description" contain />
+```
+
+### Video
+
+The `Video` component accepts the same `full` and `color` properties as images. There are some other properties to control the video player.
+
+Setting the autoplay property will start the video playback on load.
+
+```javascript
+<Video src={video} autoplay />
+```
+
+Using the `loop` property will play the video in a continuous loop.
+
+```javascript
+<Video src={video} loop />
 ```
 
 ### List
@@ -273,4 +298,41 @@ It is also possible to pass some inline styles to each component.
 
 ```javascript
 <Title style={{color: 'tomato'}}>...</title>
+```
+
+## Navigating between Slides
+
+If you want to navigate between slides using code, all of the children of the `Deck` component have a `navigate()` method injected. You can use this method to navigate to another slide. The navigate function accepts the index of the slide to navigate to as a parameter.
+
+```javascript
+const FirstSlide = ({ navigate }) => {
+  const handleGoToLastSlide = event => {
+    event.preventDefault();
+    navigate(1);
+  };
+
+  return (
+    <Slide>
+      <button onClick={handleGoToLastSlide}>Go to the last slide</button>
+    </Slide>
+  );
+};
+
+const LastSlide = ({ navigate }) => {
+  const handleGoToFirsttSlide = event => {
+    event.preventDefault();
+    navigate(0);
+  };
+
+  return (
+    <Slide>
+      <button onClick={handleGoToFirsttSlide}>Go to the first slide</button>
+    </Slide>
+  );
+};
+
+<Deck>
+  <FirstSlide />
+  <LastSlide />
+</Deck>;
 ```
