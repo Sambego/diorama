@@ -135,6 +135,12 @@ export default class Deck extends Component {
         next: children[slide + 1],
       }));
     }
+
+    if (this.presenterWindow) {
+      this.presenterWindow.document.title = `[ Presenter notes - slide ${slide + 1}/${
+        children.length
+      } ] - ${document.title}`;
+    }
   }
 
   renderPresenterNotes(currentSlide, currentSlideIndex, nextSlide, totalSlides) {
@@ -151,15 +157,15 @@ export default class Deck extends Component {
           total={totalSlides}
           ref={this.presenterElementRef}
           parentStyles={mainStyles}
-          origin={
-            `${window.location.protocol
-            }//${
-              window.location.hostname
-            }${window.location.port ? `:${window.location.port}` : ''}`
-          }
+          origin={`${window.location.protocol}//${window.location.hostname}${
+            window.location.port ? `:${window.location.port}` : ''
+          }`}
         />,
         presenterNotesContainer,
       );
+
+      this.presenterWindow.document.title = `[ Presenter notes - slide ${currentSlideIndex
+        + 1}/${totalSlides} ] - ${document.title}`;
 
       [].forEach.call(mainStyles, (style) => {
         this.presenterWindow.document.head.innerHTML += style.outerHTML;
