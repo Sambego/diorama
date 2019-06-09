@@ -10,13 +10,14 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  min-height: calc(((40rem / 16) * 9) + 4rem);
+  height: 100%;
+  min-height: calc(((40vw / 16) * 9) + 4rem);
 }
 
 .slide,
 .next {
-  width: 40rem;
-  height: calc((40rem / 16) * 9);
+  width: 40vw;
+  height: calc((40vw / 16) * 9);
   padding: 0;
   margin: 2rem;
   background: white;

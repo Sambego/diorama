@@ -110,7 +110,7 @@ export default class Deck extends Component {
     this.presenterWindow = window.open(
       '',
       'Presenter notes',
-      'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=1000,height=600',
+      'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,width=1000,height=600',
     );
 
     if (!this.presenterWindow || this.presenterWindow.closed) {
@@ -150,6 +150,7 @@ export default class Deck extends Component {
           current={currentSlideIndex + 1}
           total={totalSlides}
           ref={this.presenterElementRef}
+          parentStyles={mainStyles}
         />,
         presenterNotesContainer,
       );

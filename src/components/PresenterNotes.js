@@ -1,4 +1,5 @@
 import React, { Component, cloneElement } from 'react';
+import { renderToString } from 'react-dom/server';
 import PropTypes from 'prop-types';
 
 import style from './PresenterNotes.css';
@@ -9,20 +10,15 @@ export default class PresenterNotes extends Component {
     notes: PropTypes.string,
     slide: PropTypes.node.isRequired,
     next: PropTypes.node,
+    parentStyles: PropTypes.objectOf(PropTypes.any),
   };
   /* eslint-enable react/no-unused-prop-types */
 
   static defaultProps = {
     notes: undefined,
     next: undefined,
+    parentStyles: PropTypes.shape({}),
   };
-
-  static calculateScale() {
-    const baseWidth = 1000;
-    const miniatureWidth = 400;
-
-    return `${1 / (baseWidth / miniatureWidth)}`;
-  }
 
   constructor(props) {
     super(props);
@@ -60,28 +56,43 @@ export default class PresenterNotes extends Component {
     }));
   }
 
+  renderIframe(title, content) {
+    const { parentStyles } = this.props;
+    return (
+      <iframe
+        title={title}
+        srcDoc={[...[...parentStyles].map(parentStyle => parentStyle.outerHTML), content].join('')}
+        className={style.slide}
+      />
+    );
+  }
+
   render() {
     const {
       slide, next, notes, current, total, timer,
     } = this.state;
+    const currentSlide = this.renderIframe(
+      'current slide',
+      renderToString(
+        cloneElement(slide, {
+          className: style.miniature,
+        }),
+      ),
+    );
+    const nextSlide = this.renderIframe(
+      'next slide',
+      renderToString(
+        cloneElement(next, {
+          className: style.miniature,
+        }),
+      ),
+    );
 
     return (
       <div className={`${style.presenter} diorama-presenter`}>
         <div className={style.slides}>
-          <div className={style.slide}>
-            {cloneElement(slide, {
-              className: style.miniature,
-              scale: PresenterNotes.calculateScale(),
-            })}
-          </div>
-          {next && (
-            <div className={style.next}>
-              {cloneElement(next, {
-                className: style.miniature,
-                scale: PresenterNotes.calculateScale(),
-              })}
-            </div>
-          )}
+          {currentSlide}
+          {next && nextSlide}
         </div>
         <div className={style.notes}>{notes && notes}</div>
         <div className={style.meta}>
