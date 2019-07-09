@@ -6,10 +6,18 @@ import styles from './List.css';
 const List = ({
   children, ordered, style, className,
 }) => {
-  const renderItems = () => children.map((child, index) => cloneElement(child, {
-    className: `${styles.item} diorama-list-item`,
-    key: index,
-  }));
+  const renderItems = () => {
+    if (Array.isArray(children)) {
+      return children.map((child, index) => cloneElement(child, {
+        className: `${styles.item} diorama-list-item`,
+        key: index,
+      }));
+    }
+
+    return cloneElement(children, {
+      className: `${styles.item} diorama-list-item`,
+    });
+  };
 
   if (ordered) {
     return (
