@@ -3,7 +3,11 @@
 exports[`renders correctly 1`] = `
 <span
   className="highlight diorama-highlight "
-  style={Object {}}
+  style={
+    Object {
+      "backgroundColor": undefined,
+    }
+  }
 >
   Highlighted text
 </span>
