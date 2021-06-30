@@ -64,7 +64,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "keycode": "^2.2.0",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.24.0",
     "react-easy-swipe": "^0.0.17"
   },
   "jest": {
