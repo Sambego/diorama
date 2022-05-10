@@ -1,5 +1,8 @@
 dist
 node_modules
 .babelrc
-.eslintrc
+.eslintrc.js
 .eslintignore
+vite.config.js
+test/jest.setup.js
+postcss.config.js

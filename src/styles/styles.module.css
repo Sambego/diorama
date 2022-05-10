@@ -1,5 +1,5 @@
-@import 'colors';
-@import 'font';
+@import './colors.module.css';
+@import './font.module.css';
 
 * {
   box-sizing: border-box;
