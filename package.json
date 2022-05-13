@@ -18,7 +18,8 @@
     "build:prod": "vite build",
     "build:dev": "vite build --watch",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "postinstall": "patch-package"
   },
   "repository": {
     "type": "git",
@@ -66,8 +67,10 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
+    "patch-package": "^6.4.7",
     "postcss-import": "^14.1.0",
     "postcss-nested": "^5.0.6",
+    "postinstall-postinstall": "^2.1.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-test-renderer": "^18.1.0",
