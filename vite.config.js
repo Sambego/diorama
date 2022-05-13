@@ -2,6 +2,8 @@
 const path = require("path");
 const { defineConfig } = require("vite");
 import eslintPlugin from "vite-plugin-eslint";
+import checker from "vite-plugin-checker";
+import dts from "vite-plugin-dts";
 
 module.exports = defineConfig({
 	build: {
@@ -24,5 +26,9 @@ module.exports = defineConfig({
 			},
 		},
 	},
-	plugins: [eslintPlugin()],
+	plugins: [
+		eslintPlugin(),
+		checker({ typescript: true }),
+		dts({ rollupTypes: true }),
+	],
 });
