@@ -1,18 +1,32 @@
-import React from "react";
+import React, { CSSProperties, PropsWithChildren, ReactNode } from "react";
 import PropTypes from "prop-types";
 
 import styles from "./Quote.module.css";
 
-function Quote({ children, quotee, style, className }) {
-  return <>
-		<blockquote
-			style={style}
-			className={`${styles.quote} diorama-quote ${className}`}
-		>
-			{children}
-		</blockquote>
-		{quotee && <cite className={`${styles.cite} diorama-cite`}>{quotee}</cite>}
-	</>
+interface QuoteProps {
+	className?: string;
+	style?: CSSProperties;
+	quotee?: ReactNode;
+}
+function Quote({
+	children,
+	quotee,
+	style,
+	className,
+}: PropsWithChildren<QuoteProps>) {
+	return (
+		<>
+			<blockquote
+				style={style}
+				className={`${styles.quote} diorama-quote ${className}`}
+			>
+				{children}
+			</blockquote>
+			{quotee && (
+				<cite className={`${styles.cite} diorama-cite`}>{quotee}</cite>
+			)}
+		</>
+	);
 }
 
 Quote.propTypes = {

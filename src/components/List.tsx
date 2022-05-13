@@ -21,10 +21,12 @@ function List({ children, ordered, style, className }: ListProps) {
 				})
 			);
 		}
-
-		return cloneElement(children, {
-			className: `${styles.item} diorama-list-item`,
-		});
+		if (React.isValidElement(children)) {
+			return cloneElement(children, {
+				className: `${styles.item} diorama-list-item`,
+			});
+		}
+		return null;
 	};
 
 	if (ordered) {
