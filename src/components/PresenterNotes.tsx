@@ -46,6 +46,8 @@ export default class PresenterNotes extends Component<
 		parentStyles: PropTypes.shape({}),
 	};
 
+	private timerInterval: number = 0;
+
 	constructor(props: PresenterNotesProps) {
 		super(props);
 
@@ -54,7 +56,11 @@ export default class PresenterNotes extends Component<
 	}
 
 	componentDidMount() {
-		window.setInterval(this.updateTimer, 1000);
+		this.timerInterval = window.setInterval(this.updateTimer, 1000);
+	}
+
+	componentWillUnmount() {
+		window.clearInterval(this.timerInterval);
 	}
 
 	injectOrigin(htmlString: string) {
