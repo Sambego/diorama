@@ -10,17 +10,19 @@ type ColumnsProps = {
 
 function Columns({ children, className }: ColumnsProps) {
 	const renderColumns = () =>
-		Children.map(children, (child, index) =>
+		Children.map(children, (child, index) => {
 			// TODO: Not sure of what this style is supposed to do with children
-			// @ts-ignore
-			cloneElement(child, {
-				className: `${styles.column} diorama-column ${className} `,
-				// eslint-disable-next-line react/no-array-index-key
-				key: index,
-				// @ts-ignore
-				style: { maxWidth: `${100 / children}%` },
-			})
-		);
+			if (React.isValidElement(child)) {
+				return cloneElement(child, {
+					className: `${styles.column} diorama-column ${className} `,
+					// eslint-disable-next-line react/no-array-index-key
+					key: index,
+					// @ts-ignore
+					style: { maxWidth: `${100 / children}%` },
+				});
+			}
+			return null;
+		});
 
 	return (
 		<div className={`${styles.columns} diorama-columns`}>{renderColumns()}</div>

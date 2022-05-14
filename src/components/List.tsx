@@ -13,13 +13,17 @@ type ListProps = {
 function List({ children, ordered, style, className }: ListProps) {
 	const renderItems = () => {
 		if (Array.isArray(children)) {
-			return Children.map(children, (child, index) =>
-				cloneElement(child, {
-					className: `${styles.item} diorama-list-item`,
-					// eslint-disable-next-line react/no-array-index-key
-					key: index,
-				})
-			);
+			return Children.map(children, (child, index) => {
+				if (React.isValidElement(child)) {
+					return cloneElement(child, {
+						// @ts-ignore
+						className: `${styles.item} diorama-list-item`,
+						// eslint-disable-next-line react/no-array-index-key
+						key: index,
+					});
+				}
+				return null;
+			});
 		}
 		if (React.isValidElement(children)) {
 			return cloneElement(children, {
