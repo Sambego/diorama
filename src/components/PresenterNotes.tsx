@@ -97,7 +97,8 @@ export default class PresenterNotes extends Component<
 	}
 
 	render() {
-		const { slide, next, notes, current, total, timer } = this.state;
+		const { timer } = this.state;
+		const { slide, next, notes, current, total } = this.props;
 		const currentSlide = this.renderIframe(
 			"current slide",
 			renderToString(
