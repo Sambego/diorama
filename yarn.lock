@@ -5734,6 +5734,11 @@ vite-plugin-checker@^0.4.6:
     vscode-languageserver-textdocument "^1.0.1"
     vscode-uri "^3.0.2"
 
+vite-plugin-css-injected-by-js@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-css-injected-by-js/-/vite-plugin-css-injected-by-js-1.5.0.tgz#ab11a466fd4ddcdee38759c2299c2838ca3ab6b0"
+  integrity sha512-xvsTmVLE8hI3UJyBRgXkyiNZ6K2runzNWIKwah152H8LRaOS8MZYcF9kBaKzZe/WOZs54qnyOsV/okbHKnkc+Q==
+
 vite-plugin-dts@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/vite-plugin-dts/-/vite-plugin-dts-1.1.1.tgz#3bbb70dab2a299a20119702c9b9858351a954fd5"
@@ -5755,10 +5760,10 @@ vite-plugin-eslint@^1.6.0:
     "@rollup/pluginutils" "^4.2.1"
     rollup "^2.70.2"
 
-vite@^2.9.8:
-  version "2.9.8"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.8.tgz#2c2cb0790beb0fbe4b8c0995b80fe691a91c2545"
-  integrity sha512-zsBGwn5UT3YS0NLSJ7hnR54+vUKfgzMUh/Z9CxF1YKEBVIe213+63jrFLmZphgGI5zXwQCSmqIdbPuE8NJywPw==
+vite@^2.9.9:
+  version "2.9.9"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.9.tgz#8b558987db5e60fedec2f4b003b73164cb081c5e"
+  integrity sha512-ffaam+NgHfbEmfw/Vuh6BHKKlI/XIAhxE5QSS7gFLIngxg171mg1P3a4LSRME0z2ZU1ScxoKzphkipcYwSD5Ew==
   dependencies:
     esbuild "^0.14.27"
     postcss "^8.4.13"

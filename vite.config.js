@@ -4,6 +4,7 @@ const { defineConfig } = require("vite");
 import eslintPlugin from "vite-plugin-eslint";
 import checker from "vite-plugin-checker";
 import dts from "vite-plugin-dts";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 module.exports = defineConfig({
 	build: {
@@ -30,5 +31,6 @@ module.exports = defineConfig({
 		eslintPlugin(),
 		checker({ typescript: true }),
 		dts({ rollupTypes: true }),
+		cssInjectedByJsPlugin(),
 	],
 });

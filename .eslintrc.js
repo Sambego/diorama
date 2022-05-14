@@ -32,6 +32,12 @@ module.exports = {
 		"no-unused-vars": "off",
 		"@typescript-eslint/no-unused-vars": ["warn"],
 		"react/static-property-placement": ["off"],
+		// WHEN RELEASED > 7.29.4
+		// "react/require-default-props": [2, { functions: "defaultArguments" }],
+		"react/require-default-props": [
+			2,
+			{ ignoreFunctionalComponents: true, forbidDefaultForRequired: true },
+		],
 	},
 	globals: {
 		window: true,
