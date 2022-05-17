@@ -18,6 +18,7 @@ import PresenterNotes from "./PresenterNotes";
 import styles from "./Deck.module.css";
 import "../styles/styles.module.css";
 import { SlideProps } from "./Slide";
+import DeckContext from "../contexts/DeckContext";
 
 export type DeckProps = {
 	className?: string;
@@ -27,12 +28,6 @@ export type DeckProps = {
 	presenterNotes?: boolean;
 	children?: React.ReactElement<SlideProps>[];
 };
-
-const DeckContext = React.createContext<{
-	currentSlideIndex: number;
-	slides: React.ReactElement<SlideProps>[];
-	navigate: (slideToNavigateIndex: number) => void;
-}>({ currentSlideIndex: -1, slides: [], navigate: () => {} });
 
 function PresenterPortal({ rootDiv }: { rootDiv: HTMLDivElement }) {
 	const ctx = useContext(DeckContext);
