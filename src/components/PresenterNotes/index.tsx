@@ -1,10 +1,9 @@
-import React, { Component, cloneElement, useEffect, useState } from "react";
-import { renderToString } from "react-dom/server";
+import Navigation from "@components/Navigation";
+import { SlideProps } from "@containers/Slide";
 import PropTypes from "prop-types";
-
+import React, { cloneElement, Component, useEffect, useState } from "react";
+import { renderToString } from "react-dom/server";
 import style from "./PresenterNotes.module.css";
-import { SlideProps } from "./Slide";
-import Navigation from "./Navigation";
 
 interface PresenterNotesProps {
 	slide: React.ReactElement<SlideProps>;
@@ -19,8 +18,7 @@ interface PresenterNotesProps {
 const pad = (toPad: string | number) =>
 	`${toPad}`.length > 1 ? `${toPad}` : `0${toPad}`;
 
-interface TimerProps {}
-function Timer(props: TimerProps) {
+function Timer() {
 	const [timerTotalSeconds, setTimerSeconds] = useState(0);
 	useEffect(() => {
 		const timerInterval = window.setInterval(() => {
