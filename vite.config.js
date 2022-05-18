@@ -5,6 +5,7 @@ import eslintPlugin from "vite-plugin-eslint";
 import checker from "vite-plugin-checker";
 import dts from "vite-plugin-dts";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 module.exports = defineConfig({
 	build: {
@@ -28,6 +29,7 @@ module.exports = defineConfig({
 		},
 	},
 	plugins: [
+		tsconfigPaths(),
 		eslintPlugin(),
 		checker({ typescript: true }),
 		dts({ rollupTypes: true }),
