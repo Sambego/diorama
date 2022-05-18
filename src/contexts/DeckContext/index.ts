@@ -1,5 +1,5 @@
 import React from "react";
-import { SlideProps } from "../../components/Slide";
+import { SlideProps } from "src/containers/Slide";
 
 const DeckContext = React.createContext<{
 	currentSlideIndex: number;

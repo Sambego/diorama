@@ -1,24 +1,21 @@
-import React, {
-	cloneElement,
-	Children,
-	useState,
-	useEffect,
-	useRef,
-	useMemo,
-	useContext,
-	useCallback,
-} from "react";
-import ReactDOM from "react-dom";
+import Navigation from "@components/Navigation";
+import DeckContext from "@contexts/DeckContext";
+import Keyboard from "@services/Keyboard";
 import PropTypes from "prop-types";
+import React, {
+	Children,
+	cloneElement,
+	useCallback,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
 import Swipe from "react-easy-swipe";
-import Keyboard from "../services/Keyboard";
-import Navigation from "./Navigation";
-import PresenterNotes from "./PresenterNotes";
-
+import { SlideProps } from "src/containers/Slide";
+import "../../styles/styles.module.css";
 import styles from "./Deck.module.css";
-import "../styles/styles.module.css";
-import { SlideProps } from "./Slide";
-import DeckContext from "../contexts/DeckContext";
+import PresenterPortal from "./PresenterPortal";
 
 export type DeckProps = {
 	className?: string;
@@ -28,30 +25,6 @@ export type DeckProps = {
 	presenterNotes?: boolean;
 	children?: React.ReactElement<SlideProps>[];
 };
-
-function PresenterPortal({ rootDiv }: { rootDiv: HTMLDivElement }) {
-	const ctx = useContext(DeckContext);
-	if (!ctx.slides[ctx.currentSlideIndex]) return null;
-	const currentSlide = ctx.slides[ctx.currentSlideIndex];
-	const nextSlide = ctx.slides[ctx.currentSlideIndex + 1];
-	const totalSlides = ctx.slides.length;
-	const mainStyles = document.querySelectorAll('link[type="text/css"], style');
-
-	return ReactDOM.createPortal(
-		<PresenterNotes
-			slide={currentSlide}
-			next={nextSlide}
-			notes={currentSlide.props.notes}
-			current={ctx.currentSlideIndex + 1}
-			total={totalSlides}
-			parentStyles={mainStyles}
-			origin={`${window.location.protocol}//${window.location.hostname}${
-				window.location.port ? `:${window.location.port}` : ""
-			}`}
-		/>,
-		rootDiv
-	);
-}
 
 type NewDeckProps = DeckProps & {
 	showNavigationHUD?: boolean;

@@ -1,0 +1,30 @@
+import React, { useContext } from "react";
+import PresenterNotes from "@components/PresenterNotes";
+import DeckContext from "@contexts/DeckContext";
+import ReactDOM from "react-dom";
+
+function PresenterPortal({ rootDiv }: { rootDiv: HTMLDivElement }) {
+	const ctx = useContext(DeckContext);
+	if (!ctx.slides[ctx.currentSlideIndex]) return null;
+	const currentSlide = ctx.slides[ctx.currentSlideIndex];
+	const nextSlide = ctx.slides[ctx.currentSlideIndex + 1];
+	const totalSlides = ctx.slides.length;
+	const mainStyles = document.querySelectorAll('link[type="text/css"], style');
+
+	return ReactDOM.createPortal(
+		<PresenterNotes
+			slide={currentSlide}
+			next={nextSlide}
+			notes={currentSlide.props.notes}
+			current={ctx.currentSlideIndex + 1}
+			total={totalSlides}
+			parentStyles={mainStyles}
+			origin={`${window.location.protocol}//${window.location.hostname}${
+				window.location.port ? `:${window.location.port}` : ""
+			}`}
+		/>,
+		rootDiv
+	);
+}
+
+export default PresenterPortal;
