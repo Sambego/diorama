@@ -26,5 +26,6 @@
 [class~='diorama-presenter-preview'] {
   .columns {
     flex-direction: row;
+    min-height: initial;
   }
 }
