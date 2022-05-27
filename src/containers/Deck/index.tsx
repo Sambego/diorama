@@ -17,16 +17,15 @@ import "../../styles/styles.module.css";
 import styles from "./Deck.module.css";
 import PresenterPortal from "./PresenterPortal";
 
-export type DeckProps = {
+type DeckProps = {
 	className?: string;
 	footer?: React.ReactNode;
 	navigation?: boolean;
 	swipeToChange?: boolean;
 	presenterNotes?: boolean;
+	presenterNotesOptions?: { showNavigationHUD?: boolean };
 	children?: React.ReactElement<SlideProps>[];
-};
-
-type NewDeckProps = DeckProps & {
+	talkTitle?: string;
 	showNavigationHUD?: boolean;
 	onActiveSlideChange?: (oldSlideIndex: number, newSlideIndex: number) => void;
 };
@@ -37,10 +36,12 @@ function Deck({
 	footer,
 	onActiveSlideChange,
 	showNavigationHUD,
-	navigation = false,
+	navigation,
 	presenterNotes = false,
 	swipeToChange = false,
-}: NewDeckProps) {
+	talkTitle = "",
+	presenterNotesOptions,
+}: DeckProps) {
 	const [deckState, setDeckState] = useState<{
 		slide: number;
 		presenterNotesOpen: boolean;
@@ -56,18 +57,27 @@ function Deck({
 
 	useEffect(() => {
 		if (presenterNotes) {
-			presenterWindowRef.current = window.open(
-				"",
-				"Presenter notes",
-				"toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,width=1000,height=600"
-			);
+			if (!presenterWindowRef.current)
+				presenterWindowRef.current = window.open(
+					"",
+					"Presenter notes",
+					"toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,width=1000,height=600"
+				);
 
 			if (!presenterWindowRef.current || presenterWindowRef.current.closed) {
 				/* eslint-disable no-alert */
 				window.alert("Please allow popups to open the presenter window.");
 			} else {
-				const presenterNotesContainer =
-					presenterWindowRef.current.document.createElement("div");
+				let presenterNotesContainer: HTMLDivElement | null =
+					presenterWindowRef.current.document.getElementById(
+						"rootPresenterDiv"
+					) as HTMLDivElement | null;
+				if (!presenterNotesContainer) {
+					presenterNotesContainer =
+						presenterWindowRef.current.document.createElement("div");
+					presenterNotesContainer.setAttribute("id", "rootPresenterDiv");
+				}
+
 				const mainStyles = document.querySelectorAll(
 					'link[type="text/css"], style'
 				);
@@ -98,7 +108,6 @@ function Deck({
 		onActiveSlideChange?.(deckState.slide, deckState.slide - 1);
 		setDeckState(state => ({ ...state, slide: state.slide - 1 }));
 		window.history.pushState(undefined, "", (deckState.slide - 1).toString());
-		// this.updatePresenterNotes();
 	}, [onActiveSlideChange, deckState.slide]);
 
 	const showNextSlide = useCallback(() => {
@@ -106,7 +115,6 @@ function Deck({
 		onActiveSlideChange?.(deckState.slide, deckState.slide + 1);
 		setDeckState(state => ({ ...state, slide: state.slide + 1 }));
 		window.history.pushState(undefined, "", (deckState.slide + 1).toString());
-		// this.updatePresenterNotes();
 	}, [onActiveSlideChange, deckState.slide]);
 
 	useEffect(() => {
@@ -168,7 +176,13 @@ function Deck({
 					{slideToRender}
 				</div>
 				{presenterNotePopupDiv.current && deckState.presenterNotesOpen ? (
-					<PresenterPortal rootDiv={presenterNotePopupDiv.current} />
+					<PresenterPortal
+						rootDiv={presenterNotePopupDiv.current}
+						talkTitle={talkTitle}
+						onPreviousSlide={showPreviousSlide}
+						onNextSlide={showNextSlide}
+						showNavigationHUD={presenterNotesOptions?.showNavigationHUD}
+					/>
 				) : null}
 			</DeckContext.Provider>
 		</Swipe>
@@ -184,6 +198,10 @@ Deck.propTypes = {
 	swipeToChange: PropTypes.bool,
 	presenterNotes: PropTypes.bool,
 	onActiveSlideChange: PropTypes.func,
+	talkTitle: PropTypes.string,
+	presenterNotesOptions: PropTypes.shape({
+		showNavigationHUD: PropTypes.bool,
+	}),
 };
 
 export default Deck;

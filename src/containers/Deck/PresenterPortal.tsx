@@ -3,9 +3,23 @@ import PresenterNotes from "@components/PresenterNotes";
 import DeckContext from "@contexts/DeckContext";
 import ReactDOM from "react-dom";
 
-function PresenterPortal({ rootDiv }: { rootDiv: HTMLDivElement }) {
+function PresenterPortal({
+	rootDiv,
+	talkTitle,
+	onNextSlide,
+	onPreviousSlide,
+
+	showNavigationHUD,
+}: {
+	rootDiv: HTMLDivElement;
+	talkTitle?: string;
+	onPreviousSlide?: () => void;
+	onNextSlide?: () => void;
+	showNavigationHUD?: boolean;
+}) {
 	const ctx = useContext(DeckContext);
 	if (!ctx.slides[ctx.currentSlideIndex]) return null;
+
 	const currentSlide = ctx.slides[ctx.currentSlideIndex];
 	const nextSlide = ctx.slides[ctx.currentSlideIndex + 1];
 	const totalSlides = ctx.slides.length;
@@ -13,6 +27,7 @@ function PresenterPortal({ rootDiv }: { rootDiv: HTMLDivElement }) {
 
 	return ReactDOM.createPortal(
 		<PresenterNotes
+			talkTitle={talkTitle}
 			slide={currentSlide}
 			next={nextSlide}
 			notes={currentSlide.props.notes}
@@ -22,6 +37,9 @@ function PresenterPortal({ rootDiv }: { rootDiv: HTMLDivElement }) {
 			origin={`${window.location.protocol}//${window.location.hostname}${
 				window.location.port ? `:${window.location.port}` : ""
 			}`}
+			onPreviousSlide={onPreviousSlide}
+			onNextSlide={onNextSlide}
+			showNavigationHUD={showNavigationHUD}
 		/>,
 		rootDiv
 	);
