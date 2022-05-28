@@ -2,6 +2,7 @@ import { SlideProps } from "@containers/Slide";
 import PropTypes from "prop-types";
 import React, { cloneElement, Component, useEffect, useState } from "react";
 import { renderToString } from "react-dom/server";
+import ReactMarkdown from "react-markdown";
 import style from "./PresenterNotes.module.css";
 
 interface PresenterNotesProps {
@@ -155,7 +156,9 @@ export default class PresenterNotes extends Component<PresenterNotesProps> {
 					{currentSlide}
 					{next && nextSlide}
 				</div>
-				<div className={style.notes}>{notes && notes}</div>
+				<div className={style.notes}>
+					{notes && <ReactMarkdown>{notes}</ReactMarkdown>}
+				</div>
 				<div className={style.meta}>
 					<Timer />
 					<span>
