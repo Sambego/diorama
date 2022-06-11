@@ -10,4 +10,10 @@ const MultiSlideContext = React.createContext<{
 	},
 });
 
+export const MultiSlideInnerContext = React.createContext<{
+	isMultiSlide: boolean;
+	currentSlide: number;
+	totalSlides: number;
+}>({ currentSlide: -1, totalSlides: -1, isMultiSlide: false });
+
 export default MultiSlideContext;

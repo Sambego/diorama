@@ -1,6 +1,8 @@
 import Navigation from "@components/Navigation";
 import DeckContext from "@contexts/DeckContext";
-import MultiSlideContext from "@contexts/MultiSlideContext";
+import MultiSlideContext, {
+	MultiSlideInnerContext,
+} from "@contexts/MultiSlideContext";
 import Keyboard from "@services/Keyboard";
 import PropTypes from "prop-types";
 import React, {
@@ -31,6 +33,12 @@ type DeckProps = {
 	onActiveSlideChange?: (oldSlideIndex: number, newSlideIndex: number) => void;
 	automaticHistoryTrack?: boolean;
 	initialPageIndex?: number;
+};
+
+const MULTI_SLIDE_CONTEXT_VALUE = {
+	currentSlide: 1,
+	totalSlides: 1,
+	isMultiSlide: false,
 };
 
 function Deck({
@@ -207,25 +215,27 @@ function Deck({
 				}}
 			>
 				<DeckContext.Provider value={deckContextValue}>
-					<div className={`diorama diorama-deck ${styles.deck} ${className}`}>
-						{footer && footer}
-						{showOnScreenNavButtons && (
-							<Navigation
+					<MultiSlideInnerContext.Provider value={MULTI_SLIDE_CONTEXT_VALUE}>
+						<div className={`diorama diorama-deck ${styles.deck} ${className}`}>
+							{footer && footer}
+							{showOnScreenNavButtons && (
+								<Navigation
+									onPreviousSlide={showPreviousSlide}
+									onNextSlide={showNextSlide}
+								/>
+							)}
+							{slideToRender}
+						</div>
+						{presenterNotePopupDiv.current && deckState.presenterNotesOpen ? (
+							<PresenterPortal
+								rootDiv={presenterNotePopupDiv.current}
+								talkTitle={talkTitle}
 								onPreviousSlide={showPreviousSlide}
 								onNextSlide={showNextSlide}
+								showNavigationHUD={presenterNotesOptions?.showNavigationHUD}
 							/>
-						)}
-						{slideToRender}
-					</div>
-					{presenterNotePopupDiv.current && deckState.presenterNotesOpen ? (
-						<PresenterPortal
-							rootDiv={presenterNotePopupDiv.current}
-							talkTitle={talkTitle}
-							onPreviousSlide={showPreviousSlide}
-							onNextSlide={showNextSlide}
-							showNavigationHUD={presenterNotesOptions?.showNavigationHUD}
-						/>
-					) : null}
+						) : null}
+					</MultiSlideInnerContext.Provider>
 				</DeckContext.Provider>
 			</MultiSlideContext.Provider>
 		</Swipe>
