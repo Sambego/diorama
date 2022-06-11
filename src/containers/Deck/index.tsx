@@ -28,6 +28,8 @@ type DeckProps = {
 	talkTitle?: string;
 	showNavigationHUD?: boolean;
 	onActiveSlideChange?: (oldSlideIndex: number, newSlideIndex: number) => void;
+	automaticHistoryTrack?: boolean;
+	initialPageIndex?: number;
 };
 
 function Deck({
@@ -41,14 +43,20 @@ function Deck({
 	swipeToChange = false,
 	talkTitle = "",
 	presenterNotesOptions,
+	automaticHistoryTrack = true,
+	initialPageIndex = 0,
 }: DeckProps) {
 	const [deckState, setDeckState] = useState<{
 		slide: number;
 		presenterNotesOpen: boolean;
-	}>(() => ({
-		slide: 0,
-		presenterNotesOpen: false,
-	}));
+	}>(() => {
+		if (automaticHistoryTrack)
+			window.history.pushState(undefined, "", initialPageIndex.toString());
+		return {
+			slide: initialPageIndex,
+			presenterNotesOpen: false,
+		};
+	});
 
 	const showOnScreenNavButtons = navigation || showNavigationHUD;
 
@@ -107,15 +115,17 @@ function Deck({
 		if (deckState.slide === 0) return;
 		onActiveSlideChange?.(deckState.slide, deckState.slide - 1);
 		setDeckState(state => ({ ...state, slide: state.slide - 1 }));
-		window.history.pushState(undefined, "", (deckState.slide - 1).toString());
-	}, [onActiveSlideChange, deckState.slide]);
+		if (automaticHistoryTrack)
+			window.history.pushState(undefined, "", (deckState.slide - 1).toString());
+	}, [onActiveSlideChange, deckState.slide, automaticHistoryTrack]);
 
 	const showNextSlide = useCallback(() => {
 		if (deckState.slide === Children.count(children) - 1) return;
 		onActiveSlideChange?.(deckState.slide, deckState.slide + 1);
 		setDeckState(state => ({ ...state, slide: state.slide + 1 }));
-		window.history.pushState(undefined, "", (deckState.slide + 1).toString());
-	}, [onActiveSlideChange, deckState.slide]);
+		if (automaticHistoryTrack)
+			window.history.pushState(undefined, "", (deckState.slide + 1).toString());
+	}, [onActiveSlideChange, deckState.slide, automaticHistoryTrack]);
 
 	useEffect(() => {
 		const KeyboardLeftListener = Keyboard.on("left", showPreviousSlide);
@@ -202,6 +212,8 @@ Deck.propTypes = {
 	presenterNotesOptions: PropTypes.shape({
 		showNavigationHUD: PropTypes.bool,
 	}),
+	automaticHistoryTrack: PropTypes.bool,
+	initialPageIndex: PropTypes.number,
 };
 
 export default Deck;
