@@ -1,4 +1,5 @@
-import { SlideProps } from "@containers/Slide";
+import { SlideProps } from "@containers/Slide/Slide.types";
+import { MultiSlideInfo } from "@contexts/MultiSlideContext";
 import PropTypes from "prop-types";
 import React, { cloneElement, Component, useEffect, useState } from "react";
 import { renderToString } from "react-dom/server";
@@ -9,6 +10,7 @@ interface PresenterNotesProps {
 	slide: React.ReactElement<SlideProps>;
 	origin: string;
 	current: number;
+	multiSlideInfo?: MultiSlideInfo;
 	total: number;
 	notes?: string;
 	next?: React.ReactElement<SlideProps>;
@@ -74,6 +76,8 @@ export default class PresenterNotes extends Component<PresenterNotesProps> {
 		onPreviousSlide: PropTypes.func,
 		onNextSlide: PropTypes.func,
 		showNavigationHUD: PropTypes.bool,
+		// eslint-disable-next-line react/forbid-prop-types
+		multiSlideInfo: PropTypes.objectOf(PropTypes.any),
 	};
 	/* eslint-enable react/no-unused-prop-types */
 
@@ -85,6 +89,7 @@ export default class PresenterNotes extends Component<PresenterNotesProps> {
 		onPreviousSlide: () => {},
 		onNextSlide: () => {},
 		showNavigationHUD: false,
+		multiSlideInfo: undefined,
 	};
 
 	injectOrigin(htmlString: string) {
@@ -125,6 +130,7 @@ export default class PresenterNotes extends Component<PresenterNotesProps> {
 			onNextSlide,
 			onPreviousSlide,
 			showNavigationHUD,
+			multiSlideInfo,
 		} = this.props;
 
 		const currentSlide = this.renderIframe(
@@ -163,6 +169,11 @@ export default class PresenterNotes extends Component<PresenterNotesProps> {
 					<Timer />
 					<span>
 						{current}/{total}
+						{multiSlideInfo?.isMultiSlide
+							? `(MULTI ${multiSlideInfo.currentSlide + 1} / ${
+									multiSlideInfo.totalSlides
+							  })`
+							: ""}
 					</span>
 					{showNavigationHUD ? (
 						<div>

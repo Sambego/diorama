@@ -1,5 +1,9 @@
 import Navigation from "@components/Navigation";
-import DeckContext from "@contexts/DeckContext";
+import { SlideInfo, SlideProps } from "@containers/Slide/Slide.types";
+import DeckContext, {
+	DeckContextInternal,
+	DeckContextInternalType,
+} from "@contexts/DeckContext";
 import MultiSlideContext, {
 	MultiSlideInnerContext,
 } from "@contexts/MultiSlideContext";
@@ -15,7 +19,6 @@ import React, {
 	useState,
 } from "react";
 import Swipe from "react-easy-swipe";
-import { SlideProps } from "src/containers/Slide";
 import "../../styles/styles.module.css";
 import styles from "./Deck.module.css";
 import PresenterPortal from "./PresenterPortal";
@@ -183,6 +186,29 @@ function Deck({
 		return null;
 	}, [children, deckState.slide]);
 
+	const slideInfo = useRef<SlideInfo | null>(null);
+	const deckContextInternalValue = useMemo<DeckContextInternalType>(
+		() => ({
+			setMultiSlideInfo: multiSlideInfo => {
+				if (!slideInfo.current) {
+					slideInfo.current = {};
+				}
+				slideInfo.current = { multiSlideInfo: multiSlideInfo || undefined };
+			},
+			setSlideNotes(notes) {
+				if (!slideInfo.current) {
+					slideInfo.current = {};
+				}
+				slideInfo.current.notes = notes || undefined;
+			},
+			setSlideInfo(si) {
+				slideInfo.current = si;
+			},
+			getSlideInfo: () => slideInfo.current,
+		}),
+		[]
+	);
+
 	const deckContextValue = useMemo(
 		() => ({
 			slides: children || [],
@@ -215,27 +241,31 @@ function Deck({
 				}}
 			>
 				<DeckContext.Provider value={deckContextValue}>
-					<MultiSlideInnerContext.Provider value={MULTI_SLIDE_CONTEXT_VALUE}>
-						<div className={`diorama diorama-deck ${styles.deck} ${className}`}>
-							{footer && footer}
-							{showOnScreenNavButtons && (
-								<Navigation
+					<DeckContextInternal.Provider value={deckContextInternalValue}>
+						<MultiSlideInnerContext.Provider value={MULTI_SLIDE_CONTEXT_VALUE}>
+							<div
+								className={`diorama diorama-deck ${styles.deck} ${className}`}
+							>
+								{footer && footer}
+								{showOnScreenNavButtons && (
+									<Navigation
+										onPreviousSlide={showPreviousSlide}
+										onNextSlide={showNextSlide}
+									/>
+								)}
+								{slideToRender}
+							</div>
+							{presenterNotePopupDiv.current && deckState.presenterNotesOpen ? (
+								<PresenterPortal
+									rootDiv={presenterNotePopupDiv.current}
+									talkTitle={talkTitle}
 									onPreviousSlide={showPreviousSlide}
 									onNextSlide={showNextSlide}
+									showNavigationHUD={presenterNotesOptions?.showNavigationHUD}
 								/>
-							)}
-							{slideToRender}
-						</div>
-						{presenterNotePopupDiv.current && deckState.presenterNotesOpen ? (
-							<PresenterPortal
-								rootDiv={presenterNotePopupDiv.current}
-								talkTitle={talkTitle}
-								onPreviousSlide={showPreviousSlide}
-								onNextSlide={showNextSlide}
-								showNavigationHUD={presenterNotesOptions?.showNavigationHUD}
-							/>
-						) : null}
-					</MultiSlideInnerContext.Provider>
+							) : null}
+						</MultiSlideInnerContext.Provider>
+					</DeckContextInternal.Provider>
 				</DeckContext.Provider>
 			</MultiSlideContext.Provider>
 		</Swipe>

@@ -1,4 +1,4 @@
-import DeckContext from "@contexts/DeckContext";
+import DeckContext, { DeckContextInternal } from "@contexts/DeckContext";
 import MultiSlideContext, {
 	MultiSlideInnerContext,
 } from "@contexts/MultiSlideContext";
@@ -21,6 +21,7 @@ export default function MultistepSlide({
 }) {
 	const multislideCxt = useContext(MultiSlideContext);
 	const ctx = useContext(DeckContext);
+	const intDeckCtx = useContext(DeckContextInternal);
 
 	const [currentStep, setCurrentStep] = useState(0);
 	const totalSteps = useMemo(() => {
@@ -65,6 +66,13 @@ export default function MultistepSlide({
 		}),
 		[totalSteps, currentStep]
 	);
+
+	useEffect(() => {
+		intDeckCtx.setMultiSlideInfo(innerCtxValue);
+		return () => {
+			intDeckCtx.setMultiSlideInfo(null);
+		};
+	}, [innerCtxValue]);
 
 	return (
 		// eslint-disable-next-line react/jsx-props-no-spreading
