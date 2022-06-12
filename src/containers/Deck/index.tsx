@@ -193,7 +193,10 @@ function Deck({
 				if (!slideInfo.current) {
 					slideInfo.current = {};
 				}
-				slideInfo.current = { multiSlideInfo: multiSlideInfo || undefined };
+				slideInfo.current = {
+					...slideInfo.current,
+					multiSlideInfo: multiSlideInfo || undefined,
+				};
 			},
 			setSlideNotes(notes) {
 				if (!slideInfo.current) {

@@ -168,7 +168,7 @@ export default class PresenterNotes extends Component<PresenterNotesProps> {
 				<div className={style.meta}>
 					<Timer />
 					<span>
-						{current}/{total}
+						{current}/{total}{" "}
 						{multiSlideInfo?.isMultiSlide
 							? `(MULTI ${multiSlideInfo.currentSlide + 1} / ${
 									multiSlideInfo.totalSlides
