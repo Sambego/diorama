@@ -14,6 +14,7 @@ import Quote from "./components/Quote";
 import Browser from "./components/Browser";
 import Video from "./components/Video";
 import DeckContext from "./contexts/DeckContext";
+import MultistepSlide from "./containers/MultistepSlide";
 
 export {
 	Deck,
@@ -31,4 +32,5 @@ export {
 	List,
 	Browser,
 	Video,
+	MultistepSlide,
 };

@@ -1,5 +1,8 @@
 import Navigation from "@components/Navigation";
 import DeckContext from "@contexts/DeckContext";
+import MultiSlideContext, {
+	MultiSlideInnerContext,
+} from "@contexts/MultiSlideContext";
 import Keyboard from "@services/Keyboard";
 import PropTypes from "prop-types";
 import React, {
@@ -32,6 +35,12 @@ type DeckProps = {
 	initialPageIndex?: number;
 };
 
+const MULTI_SLIDE_CONTEXT_VALUE = {
+	currentSlide: 1,
+	totalSlides: 1,
+	isMultiSlide: false,
+};
+
 function Deck({
 	children,
 	className,
@@ -54,9 +63,14 @@ function Deck({
 			window.history.pushState(undefined, "", initialPageIndex.toString());
 		return {
 			slide: initialPageIndex,
+			multislideHandler: null,
 			presenterNotesOpen: false,
 		};
 	});
+
+	const [multiSlideHandler, setMultiSlideHandler] = useState<
+		((direction: "next" | "prev") => boolean) | null
+	>(null);
 
 	const showOnScreenNavButtons = navigation || showNavigationHUD;
 
@@ -112,20 +126,38 @@ function Deck({
 	}, [presenterNotes]);
 
 	const showPreviousSlide = useCallback(() => {
+		if (multiSlideHandler) {
+			const prevented = multiSlideHandler("prev");
+			if (prevented) return;
+		}
 		if (deckState.slide === 0) return;
 		onActiveSlideChange?.(deckState.slide, deckState.slide - 1);
 		setDeckState(state => ({ ...state, slide: state.slide - 1 }));
 		if (automaticHistoryTrack)
 			window.history.pushState(undefined, "", (deckState.slide - 1).toString());
-	}, [onActiveSlideChange, deckState.slide, automaticHistoryTrack]);
+	}, [
+		multiSlideHandler,
+		onActiveSlideChange,
+		deckState.slide,
+		automaticHistoryTrack,
+	]);
 
 	const showNextSlide = useCallback(() => {
+		if (multiSlideHandler) {
+			const prevented = multiSlideHandler("next");
+			if (prevented) return;
+		}
 		if (deckState.slide === Children.count(children) - 1) return;
 		onActiveSlideChange?.(deckState.slide, deckState.slide + 1);
 		setDeckState(state => ({ ...state, slide: state.slide + 1 }));
 		if (automaticHistoryTrack)
 			window.history.pushState(undefined, "", (deckState.slide + 1).toString());
-	}, [onActiveSlideChange, deckState.slide, automaticHistoryTrack]);
+	}, [
+		multiSlideHandler,
+		onActiveSlideChange,
+		deckState.slide,
+		automaticHistoryTrack,
+	]);
 
 	useEffect(() => {
 		const KeyboardLeftListener = Keyboard.on("left", showPreviousSlide);
@@ -174,27 +206,38 @@ function Deck({
 			onSwipeRight={swipeToChange ? showNextSlide : undefined}
 			allowMouseEvents
 		>
-			<DeckContext.Provider value={deckContextValue}>
-				<div className={`diorama diorama-deck ${styles.deck} ${className}`}>
-					{footer && footer}
-					{showOnScreenNavButtons && (
-						<Navigation
-							onPreviousSlide={showPreviousSlide}
-							onNextSlide={showNextSlide}
-						/>
-					)}
-					{slideToRender}
-				</div>
-				{presenterNotePopupDiv.current && deckState.presenterNotesOpen ? (
-					<PresenterPortal
-						rootDiv={presenterNotePopupDiv.current}
-						talkTitle={talkTitle}
-						onPreviousSlide={showPreviousSlide}
-						onNextSlide={showNextSlide}
-						showNavigationHUD={presenterNotesOptions?.showNavigationHUD}
-					/>
-				) : null}
-			</DeckContext.Provider>
+			<MultiSlideContext.Provider
+				// eslint-disable-next-line react/jsx-no-constructed-context-values
+				value={{
+					setMultistepSlideHandler: fn => {
+						setMultiSlideHandler(() => fn);
+					},
+				}}
+			>
+				<DeckContext.Provider value={deckContextValue}>
+					<MultiSlideInnerContext.Provider value={MULTI_SLIDE_CONTEXT_VALUE}>
+						<div className={`diorama diorama-deck ${styles.deck} ${className}`}>
+							{footer && footer}
+							{showOnScreenNavButtons && (
+								<Navigation
+									onPreviousSlide={showPreviousSlide}
+									onNextSlide={showNextSlide}
+								/>
+							)}
+							{slideToRender}
+						</div>
+						{presenterNotePopupDiv.current && deckState.presenterNotesOpen ? (
+							<PresenterPortal
+								rootDiv={presenterNotePopupDiv.current}
+								talkTitle={talkTitle}
+								onPreviousSlide={showPreviousSlide}
+								onNextSlide={showNextSlide}
+								showNavigationHUD={presenterNotesOptions?.showNavigationHUD}
+							/>
+						) : null}
+					</MultiSlideInnerContext.Provider>
+				</DeckContext.Provider>
+			</MultiSlideContext.Provider>
 		</Swipe>
 	);
 }
