@@ -1,3 +1,4 @@
+import DeckContext from "@contexts/DeckContext";
 import MultiSlideContext, {
 	MultiSlideInnerContext,
 } from "@contexts/MultiSlideContext";
@@ -19,6 +20,7 @@ export default function MultistepSlide({
 	stepsCount: (() => number) | number;
 }) {
 	const multislideCxt = useContext(MultiSlideContext);
+	const ctx = useContext(DeckContext);
 
 	const [currentStep, setCurrentStep] = useState(0);
 	const totalSteps = useMemo(() => {
@@ -27,6 +29,10 @@ export default function MultistepSlide({
 		}
 		return stepsCount;
 	}, [stepsCount]);
+
+	useEffect(() => {
+		setCurrentStep(0);
+	}, [ctx.currentSlideIndex]);
 
 	const listener = useCallback(
 		(direction: "next" | "prev") => {
