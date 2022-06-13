@@ -15,13 +15,12 @@ Check out the demo right here https://sambego.github.io/diorama-demo/
 ## Installing
 
 ```
+# NPM
 npm install @sambego/diorama
-```
-
-or
-
-```
+# Yarn
 yarn add @sambego/diorama
+# PNPM
+pnpm install @sambego/diorama
 ```
 
 ## Usage
@@ -29,20 +28,20 @@ yarn add @sambego/diorama
 Once you have the components installed trough NPM, you can import them in your react project.
 
 ```javascript
-import React from 'react';
-import { Deck, Slide, Title, Text } from '@sambego/diorama';
+import React from "react";
+import { Deck, Slide, Title, Text } from "@sambego/diorama";
 
 const MyApp = () => {
-  return (
-    <Deck>
-      <Slide>
-        <Title>This is the title of my presentation</Title>
-      </Slide>
-      <Slide>
-        <Text>A witty joke to start off the presentation</Text>
-      </Slide>
-    </Deck>
-  );
+	return (
+		<Deck>
+			<Slide>
+				<Title>This is the title of my presentation</Title>
+			</Slide>
+			<Slide>
+				<Text>A witty joke to start off the presentation</Text>
+			</Slide>
+		</Deck>
+	);
 };
 ```
 
@@ -67,13 +66,13 @@ const MyApp = () => {
 
 This is the root element of each presentation, it will handle navigation trough the slides. It accepts some properties.
 
-- `navigation`: when this property is present, an onscreen navigation will render on top of every slide (previous and next arrow);
+- `navigation` or `showNavigationHUD`: when this property is present, an onscreen navigation will render on top of every slide (previous and next arrow);
 - `presenterNotes`: Setting this property will open a new window with presenter notes on bootstrap or on reload.
 - `footer`: Any valid react element, which will render with every slide. by default there is a `<Footer />` available.
 
 ```javascript
 <Deck navigation presenterNotes>
-  ...
+	...
 </Deck>
 ```
 
@@ -88,7 +87,7 @@ Even though the `<Deck />` component accepts all valid React nodes as children, 
 
 ```javascript
 <Deck>
-  <Slide>Slide content</Slide>
+	<Slide>Slide content</Slide>
 </Deck>
 ```
 
@@ -96,7 +95,7 @@ The slide component will accept a `note` attribute, which will display presenter
 
 ```javascript
 <Deck>
-  <Slide note="These are the presenter notes">Slide content</Slide>
+	<Slide note="These are the presenter notes">Slide content</Slide>
 </Deck>
 ```
 
@@ -178,10 +177,10 @@ Using the `loop` property will play the video in a continuous loop.
 
 ```javascript
 <List ordered>
-  <li>one</li>
-  <li>two</li>
-  <li>three</li>
-  <li>four</li>
+	<li>one</li>
+	<li>two</li>
+	<li>three</li>
+	<li>four</li>
 </List>
 ```
 
@@ -189,10 +188,10 @@ Using the `loop` property will play the video in a continuous loop.
 
 ```javascript
 <List>
-  <li>one</li>
-  <li>two</li>
-  <li>three</li>
-  <li>four</li>
+	<li>one</li>
+	<li>two</li>
+	<li>three</li>
+	<li>four</li>
 </List>
 ```
 
@@ -202,8 +201,8 @@ You can add as many child nodes as you want and they will be displayed in nice e
 
 ```javascript
 <Columns>
-  <div>Column 1</div>
-  <div>Column 2</div>
+	<div>Column 1</div>
+	<div>Column 2</div>
 </Columns>
 ```
 
@@ -218,13 +217,13 @@ This component accepts 2 attributes, `code` which is a string of the code to dis
 > The code is formatted using the amazing [Prism.js library](https://prismjs.com/). If you need a language which is not included in the Prism.js default set of languages, you can import it **after** you've imported the `<Code />` component.
 
 ```javascript
-import { Slide, Code } from '@sambego/diorama';
-import 'prismjs/components/prism-bash.min.js';
+import { Slide, Code } from "@sambego/diorama";
+import "prismjs/components/prism-bash.min.js";
 
 const CodeExample = () => (
-  <Slide>
-    <Code code="npm install @sambego/diorama" lang="bash" />
-  </Slide>
+	<Slide>
+		<Code code="npm install @sambego/diorama" lang="bash" />
+	</Slide>
 );
 ```
 
@@ -246,35 +245,35 @@ The easiest way to get some color customisation is to overwrite the color CSS va
 
 ```css
 :root {
-  --color-gray-0: #1b2b34;
-  --color-gray-1: #343d46;
-  --color-gray-2: #4f5b66;
-  --color-gray-3: #65737e;
-  --color-gray-4: #a7adba;
-  --color-gray-5: #c0c5ce;
-  --color-gray-6: #cdd3de;
-  --color-gray-7: #d8dee9;
+	--color-gray-0: #1b2b34;
+	--color-gray-1: #343d46;
+	--color-gray-2: #4f5b66;
+	--color-gray-3: #65737e;
+	--color-gray-4: #a7adba;
+	--color-gray-5: #c0c5ce;
+	--color-gray-6: #cdd3de;
+	--color-gray-7: #d8dee9;
 
-  --color-gray-dark: var(--color-gray-0);
-  --color-gray-medium: var(--color-gray-4);
-  --color-gray-light: var(--color-gray-7);
+	--color-gray-dark: var(--color-gray-0);
+	--color-gray-medium: var(--color-gray-4);
+	--color-gray-light: var(--color-gray-7);
 
-  --color-red: #ec5f67;
-  --color-orange: #f99157;
-  --color-yellow: #fac863;
-  --color-green: #99c794;
-  --color-teal: #5fb3b3;
-  --color-blue: #6699cc;
-  --color-pink: #c594c5;
-  --color-brown: #ab7967;
+	--color-red: #ec5f67;
+	--color-orange: #f99157;
+	--color-yellow: #fac863;
+	--color-green: #99c794;
+	--color-teal: #5fb3b3;
+	--color-blue: #6699cc;
+	--color-pink: #c594c5;
+	--color-brown: #ab7967;
 
-  --color-primary: var(--color-green);
-  --color-seconday: var(--color-teal);
+	--color-primary: var(--color-green);
+	--color-seconday: var(--color-teal);
 
-  --color-danger: var(--color-red);
-  --color-success: var(--color-green);
-  --color-info: var(--color-blue);
-  --color-warning: var(--color-yellow);
+	--color-danger: var(--color-red);
+	--color-success: var(--color-green);
+	--color-info: var(--color-blue);
+	--color-warning: var(--color-yellow);
 }
 ```
 
@@ -300,39 +299,43 @@ It is also possible to pass some inline styles to each component.
 <Title style={{color: 'tomato'}}>...</title>
 ```
 
+## Accessing presentation Deck informations from its children
+
+You can use the `DeckContext` to access updated context information about the presentation and utility methods, avoiding being injected and being accessible from nested components enclosed as children of `Deck`.
+
 ## Navigating between Slides
 
-If you want to navigate between slides using code, all of the children of the `Deck` component have a `navigate()` method injected. You can use this method to navigate to another slide. The navigate function accepts the index of the slide to navigate to as a parameter.
+If you want to navigate between slides using code, the `Deck` component injects a `DeckContext` exposing various utils. Among others, there is a `navigate()` method. You can use this method to navigate to another slide. The navigate function accepts the index of the slide to navigate to as a parameter.
 
 ```javascript
 const FirstSlide = ({ navigate }) => {
-  const handleGoToLastSlide = event => {
-    event.preventDefault();
-    navigate(1);
-  };
+	const handleGoToLastSlide = event => {
+		event.preventDefault();
+		navigate(1);
+	};
 
-  return (
-    <Slide>
-      <button onClick={handleGoToLastSlide}>Go to the last slide</button>
-    </Slide>
-  );
+	return (
+		<Slide>
+			<button onClick={handleGoToLastSlide}>Go to the last slide</button>
+		</Slide>
+	);
 };
 
 const LastSlide = ({ navigate }) => {
-  const handleGoToFirsttSlide = event => {
-    event.preventDefault();
-    navigate(0);
-  };
+	const handleGoToFirsttSlide = event => {
+		event.preventDefault();
+		navigate(0);
+	};
 
-  return (
-    <Slide>
-      <button onClick={handleGoToFirsttSlide}>Go to the first slide</button>
-    </Slide>
-  );
+	return (
+		<Slide>
+			<button onClick={handleGoToFirsttSlide}>Go to the first slide</button>
+		</Slide>
+	);
 };
 
 <Deck>
-  <FirstSlide />
-  <LastSlide />
+	<FirstSlide />
+	<LastSlide />
 </Deck>;
 ```

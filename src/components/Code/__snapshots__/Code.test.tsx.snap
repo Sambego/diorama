@@ -1,0 +1,40 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  className="_code_4ct3i_1 diorama-code "
+  style={{}}
+>
+  <header
+    className="_header_4ct3i_27 diorama-code-header"
+  >
+    <span
+      className="_red_4ct3i_35"
+    />
+    <span
+      className="_yellow_4ct3i_36"
+    />
+    <span
+      className="_green_4ct3i_37"
+    />
+    <span
+      className="_lang_4ct3i_58"
+    >
+      javascript
+    </span>
+  </header>
+  <div
+    className="_snippet_4ct3i_65 diorama-code-snippet"
+  >
+    <pre>
+      <code
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<span class=\\"token keyword\\">const</span> <span class=\\"token function-variable function\\">foo</span> <span class=\\"token operator\\">=</span> <span class=\\"token punctuation\\">(</span><span class=\\"token punctuation\\">)</span> <span class=\\"token operator\\">=></span> <span class=\\"token string\\">'bar'</span><span class=\\"token punctuation\\">;</span>",
+          }
+        }
+      />
+    </pre>
+  </div>
+</div>
+`;

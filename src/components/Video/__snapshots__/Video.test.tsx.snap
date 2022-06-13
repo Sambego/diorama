@@ -1,0 +1,16 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  className="diorama-video-container"
+  style={{}}
+>
+  <video
+    autoPlay={false}
+    className="diorama-video-player"
+    loop={false}
+    muted={true}
+    src="#"
+  />
+</div>
+`;

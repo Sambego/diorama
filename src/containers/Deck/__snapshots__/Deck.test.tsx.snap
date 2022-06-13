@@ -1,0 +1,20 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  className="diorama-swipe-container _swipe_11hzp_1"
+  onMouseDown={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+>
+  <div
+    className="diorama diorama-deck _deck_11hzp_2 undefined"
+  >
+    <div
+      index={0}
+    >
+      Slide 1
+    </div>
+  </div>
+</div>
+`;

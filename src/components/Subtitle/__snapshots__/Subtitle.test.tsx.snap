@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<h2
+  className="_subtitle_1majr_1 diorama-subtitle "
+  style={{}}
+>
+  Subtitle content
+</h2>
+`;

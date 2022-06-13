@@ -1,0 +1,17 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+[
+  <blockquote
+    className="_quote_1hgwv_1 diorama-quote "
+    style={{}}
+  >
+    Nice quote
+  </blockquote>,
+  <cite
+    className="_cite_1hgwv_17 diorama-cite"
+  >
+    Sam Bellen
+  </cite>,
+]
+`;

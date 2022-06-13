@@ -1,13 +1,27 @@
 {
   "name": "@sambego/diorama",
-  "version": "1.1.4",
+  "version": "2.0.0",
   "description": "A react library to create presentations",
-  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.umd.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    }
+  },
   "scripts": {
-    "build:dev": "webpack --mode development --watch",
-    "build:prod": "webpack --mode production",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "build:prod": "vite build",
+    "build:dev": "vite build --watch",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "postinstall": "patch-package"
   },
   "repository": {
     "type": "git",
@@ -26,51 +40,58 @@
   },
   "homepage": "https://github.com/Sambego/diorama#readme",
   "peerDependencies": {
-    "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "prop-types": "^15.8.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.0",
-    "@babel/plugin-proposal-class-properties": "^7.2.1",
-    "@babel/preset-env": "^7.2.0",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.0.0",
-    "autoprefixer": "^9.4.2",
-    "babel-core": "^7.0.0-0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-transform-function-bind": "^6.22.0",
-    "css-loader": "^1.0.1",
-    "eslint": "^5.9.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
-    "postcss-import": "^12.0.1",
-    "postcss-loader": "^3.0.0",
-    "postcss-nested": "^4.1.0",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-test-renderer": "^16.6.3",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.27.1",
-    "webpack-cli": "^3.1.2"
+    "@babel/core": "^7.17.12",
+    "@babel/preset-env": "^7.17.12",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
+    "@babel/register": "^7.17.7",
+    "@types/jest": "^28.1.1",
+    "@types/prismjs": "^1.26.0",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@types/react-test-renderer": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "@vitest/ui": "^0.14.2",
+    "autoprefixer": "^10.4.7",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
+    "c8": "^7.11.3",
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "jsdom": "^19.0.0",
+    "postcss-import": "^14.1.0",
+    "postcss-nested": "^5.0.6",
+    "postinstall-postinstall": "^2.1.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-test-renderer": "^18.1.0",
+    "typescript": "^4.6.4",
+    "vite": "^2.9.9",
+    "vite-plugin-checker": "^0.4.6",
+    "vite-plugin-css-injected-by-js": "^1.5.0",
+    "vite-plugin-dts": "^1.1.1",
+    "vite-plugin-eslint": "^1.6.0",
+    "vite-tsconfig-paths": "^3.4.1",
+    "vitest": "^0.14.2"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
-    "keycode": "^2.2.0",
-    "prismjs": "^1.15.0",
-    "react-easy-swipe": "^0.0.17"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css)$": "identity-obj-proxy"
-    }
+    "classnames": "^2.3.1",
+    "keycode": "^2.2.1",
+    "prismjs": "^1.28.0",
+    "react-easy-swipe": "^0.0.22",
+    "react-markdown": "^8.0.3",
+    "patch-package": "^6.4.7"
   }
 }

@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<footer
+  className="_footer_gkmlu_1 diorama-footer "
+  style={{}}
+>
+  <div
+    className="_left_gkmlu_15 diorama-footer-left"
+  >
+    @sambego
+  </div>
+</footer>
+`;

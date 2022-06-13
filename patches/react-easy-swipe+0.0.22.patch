@@ -1,0 +1,10 @@
+diff --git a/node_modules/react-easy-swipe/react-easy-swipe.d.ts b/node_modules/react-easy-swipe/react-easy-swipe.d.ts
+index 894e8c2..7ff95cf 100644
+--- a/node_modules/react-easy-swipe/react-easy-swipe.d.ts
++++ b/node_modules/react-easy-swipe/react-easy-swipe.d.ts
+@@ -24,4 +24,4 @@ interface SwipeProps {
+   tolerance?: number
+ }
+ 
+-export default class Swipe extends React.Component<SwipeProps> {}
++export default class Swipe extends React.Component<React.PropsWithChildren<SwipeProps>> {}

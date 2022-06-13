@@ -1,0 +1,19 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<ul
+  className="_list_15h4c_1 diorama-list diorama-list-unordered "
+  style={{}}
+>
+  <li
+    className="_item_15h4c_14 diorama-list-item"
+  >
+    one
+  </li>
+  <li
+    className="_item_15h4c_14 diorama-list-item"
+  >
+    two
+  </li>
+</ul>
+`;

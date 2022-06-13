@@ -1,0 +1,38 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  className="_browser_1ft1l_1 diorama-browser "
+  style={{}}
+>
+  <header
+    className="_header_1ft1l_11"
+  >
+    <div
+      className="_traffic_1ft1l_21"
+    >
+      <span
+        className="_red_1ft1l_28"
+      />
+      <span
+        className="_yellow_1ft1l_29"
+      />
+      <span
+        className="_green_1ft1l_30"
+      />
+    </div>
+    <input
+      className="_address_1ft1l_51"
+      disabled={true}
+      type="text"
+      value="https://sambego.be"
+    />
+  </header>
+  <iframe
+    className="_iframe_1ft1l_63"
+    frameBorder="0"
+    src="https://sambego.be"
+    title="preview browser"
+  />
+</div>
+`;
