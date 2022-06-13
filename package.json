@@ -38,21 +38,21 @@
   },
   "homepage": "https://github.com/Sambego/diorama#readme",
   "peerDependencies": {
-    "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "prop-types": "^15.8.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
-    "@babel/preset-env": "^7.17.10",
-    "@babel/preset-react": "^7.16.7",
-    "@babel/preset-typescript": "^7.16.7",
+    "@babel/core": "^7.17.12",
+    "@babel/preset-env": "^7.17.12",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
     "@babel/register": "^7.17.7",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
+    "@types/react-dom": "^18.0.4",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
     "autoprefixer": "^10.4.7",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
@@ -60,6 +60,7 @@
     "eslint": "^8.15.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -79,13 +80,15 @@
     "vite-plugin-checker": "^0.4.6",
     "vite-plugin-css-injected-by-js": "^1.5.0",
     "vite-plugin-dts": "^1.1.1",
-    "vite-plugin-eslint": "^1.6.0"
+    "vite-plugin-eslint": "^1.6.0",
+    "vite-tsconfig-paths": "^3.4.1"
   },
   "dependencies": {
     "classnames": "^2.3.1",
     "keycode": "^2.2.1",
     "prismjs": "^1.28.0",
-    "react-easy-swipe": "^0.0.22"
+    "react-easy-swipe": "^0.0.22",
+    "react-markdown": "^8.0.3"
   },
   "jest": {
     "moduleNameMapper": {

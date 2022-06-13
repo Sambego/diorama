@@ -1,20 +1,19 @@
 /* eslint-disable react/no-unused-prop-types */
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 
+import { DeckContextInternal } from "@contexts/DeckContext";
 import styles from "./Slide.module.css";
+import { SlideProps } from "./Slide.types";
 
-export type SlideProps = React.PropsWithChildren<{
-	className?: string;
-	style?: React.CSSProperties;
-	notes?: string;
-	// eslint-disable-next-line react/require-default-props
-	index?: number;
-	// eslint-disable-next-line react/require-default-props
-	navigate?: (slideIndex: number) => void;
-}>;
-
-function Slide({ children, style, className }: SlideProps) {
+function Slide({ children, style, className, notes }: SlideProps) {
+	const intDeckCtx = useContext(DeckContextInternal);
+	useEffect(() => {
+		intDeckCtx.setSlideNotes(notes);
+		return () => {
+			intDeckCtx.setSlideNotes(null);
+		};
+	}, [notes]);
 	return (
 		<div style={style} className={`${styles.slide} diorama-slide ${className}`}>
 			<div className={`diorama-content ${styles.content}`}>{children}</div>

@@ -27,6 +27,7 @@
 .notes {
   display: block;
   height: 100%;
+  overflow: scroll;
   padding: 2rem;
   font-size: 4rem;
   background: var(--color-gray-2);

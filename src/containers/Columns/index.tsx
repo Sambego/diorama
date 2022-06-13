@@ -18,7 +18,7 @@ function Columns({ children, className }: ColumnsProps) {
 					// eslint-disable-next-line react/no-array-index-key
 					key: index,
 					// @ts-ignore
-					style: { maxWidth: `${100 / children}%` },
+					style: { maxWidth: `${100 / React.Children.count(children)}%` },
 				});
 			}
 			return null;

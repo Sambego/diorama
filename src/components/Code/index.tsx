@@ -35,9 +35,7 @@ function Code({ code, lang, style, className }: CodeProps) {
 								  )
 								: "",
 						}}
-					>
-						{!lang ? code : ""}
-					</code>
+					/>
 				</pre>
 			</div>
 		</div>
