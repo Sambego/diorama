@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<h1
+  className="_title_1woga_1 diorama-title "
+  style={{}}
+>
+  Title content
+</h1>
+`;

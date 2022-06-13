@@ -1,0 +1,35 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<nav
+  className="_navigation_8avy0_1 diorama-navigation "
+  style={{}}
+>
+  <ul
+    className="_list_8avy0_9"
+  >
+    <li
+      className="_item_8avy0_16"
+    >
+      <button
+        className="_previous_8avy0_23 diorama-previous"
+        onClick={[Function]}
+        type="button"
+      >
+        Previous
+      </button>
+    </li>
+    <li
+      className="_item_8avy0_16"
+    >
+      <button
+        className="_next_8avy0_24 diorama-next"
+        onClick={[Function]}
+        type="button"
+      >
+        Next
+      </button>
+    </li>
+  </ul>
+</nav>
+`;

@@ -17,8 +17,10 @@
   "scripts": {
     "build:prod": "vite build",
     "build:dev": "vite build --watch",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
     "postinstall": "patch-package"
   },
   "repository": {
@@ -48,15 +50,18 @@
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
     "@babel/register": "^7.17.7",
+    "@types/jest": "^28.1.1",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
+    "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
+    "@vitest/ui": "^0.14.2",
     "autoprefixer": "^10.4.7",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^28.1.0",
+    "c8": "^7.11.3",
     "eslint": "^8.15.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -65,9 +70,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^28.1.0",
-    "jest-environment-jsdom": "^28.1.0",
+    "jsdom": "^19.0.0",
     "patch-package": "^6.4.7",
     "postcss-import": "^14.1.0",
     "postcss-nested": "^5.0.6",
@@ -81,7 +84,8 @@
     "vite-plugin-css-injected-by-js": "^1.5.0",
     "vite-plugin-dts": "^1.1.1",
     "vite-plugin-eslint": "^1.6.0",
-    "vite-tsconfig-paths": "^3.4.1"
+    "vite-tsconfig-paths": "^3.4.1",
+    "vitest": "^0.14.2"
   },
   "dependencies": {
     "classnames": "^2.3.1",
@@ -89,15 +93,5 @@
     "prismjs": "^1.28.0",
     "react-easy-swipe": "^0.0.22",
     "react-markdown": "^8.0.3"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css)$": "identity-obj-proxy"
-    },
-    "testEnvironment": "jsdom",
-    "setupFiles": [
-      "./test/jest.setup.js"
-    ]
   }
 }

@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  className="_container_1nb4n_1 diorama-image-container"
+>
+  <img
+    alt="image description"
+    className="_image_1nb4n_5 diorama-image"
+    src="/__mocks__/test.png"
+    style={{}}
+  />
+</div>
+`;

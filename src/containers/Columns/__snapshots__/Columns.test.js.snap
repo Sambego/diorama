@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="columns diorama-columns"
+>
+  <div
+    className="column diorama-column  "
+    style={
+      Object {
+        "maxWidth": "50%",
+      }
+    }
+  >
+    Column 1
+  </div>
+  <div
+    className="column diorama-column  "
+    style={
+      Object {
+        "maxWidth": "50%",
+      }
+    }
+  >
+    Column 2
+  </div>
+</div>
+`;

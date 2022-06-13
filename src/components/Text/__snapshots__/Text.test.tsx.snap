@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<p
+  className="_text_1kphb_1 diorama-text "
+  style={{}}
+>
+  Text content
+</p>
+`;
