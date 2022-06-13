@@ -1,13 +1,11 @@
 import React from "react";
 
-const MultiSlideContext = React.createContext<{
+export const MultiSlideInnerContext = React.createContext<{
 	setMultistepSlideHandler: (
 		fn: ((direction: "next" | "prev") => boolean) | null
 	) => void;
 }>({
-	setMultistepSlideHandler: fn => {
-		console.log("No handler declared");
-	},
+	setMultistepSlideHandler: () => {},
 });
 
 export type MultiSlideInfo = {
@@ -15,7 +13,7 @@ export type MultiSlideInfo = {
 	currentSlide: number;
 	totalSlides: number;
 };
-export const MultiSlideInnerContext = React.createContext<MultiSlideInfo>({
+const MultiSlideContext = React.createContext<MultiSlideInfo>({
 	currentSlide: -1,
 	totalSlides: -1,
 	isMultiSlide: false,

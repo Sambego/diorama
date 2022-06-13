@@ -235,7 +235,7 @@ function Deck({
 			onSwipeRight={swipeToChange ? showNextSlide : undefined}
 			allowMouseEvents
 		>
-			<MultiSlideContext.Provider
+			<MultiSlideInnerContext.Provider
 				// eslint-disable-next-line react/jsx-no-constructed-context-values
 				value={{
 					setMultistepSlideHandler: fn => {
@@ -245,7 +245,7 @@ function Deck({
 			>
 				<DeckContext.Provider value={deckContextValue}>
 					<DeckContextInternal.Provider value={deckContextInternalValue}>
-						<MultiSlideInnerContext.Provider value={MULTI_SLIDE_CONTEXT_VALUE}>
+						<MultiSlideContext.Provider value={MULTI_SLIDE_CONTEXT_VALUE}>
 							<div
 								className={`diorama diorama-deck ${styles.deck} ${className}`}
 							>
@@ -267,10 +267,10 @@ function Deck({
 									showNavigationHUD={presenterNotesOptions?.showNavigationHUD}
 								/>
 							) : null}
-						</MultiSlideInnerContext.Provider>
+						</MultiSlideContext.Provider>
 					</DeckContextInternal.Provider>
 				</DeckContext.Provider>
-			</MultiSlideContext.Provider>
+			</MultiSlideInnerContext.Provider>
 		</Swipe>
 	);
 }

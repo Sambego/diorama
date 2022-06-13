@@ -1,4 +1,5 @@
 // https://github.com/microsoft/rushstack/issues/3291
+import MultiSlideContext from "@contexts/MultiSlideContext";
 import Deck from "./containers/Deck";
 import Columns from "./containers/Columns";
 import List from "./containers/List";
@@ -32,5 +33,6 @@ export {
 	List,
 	Browser,
 	Video,
+	MultiSlideContext,
 	MultistepSlide,
 };

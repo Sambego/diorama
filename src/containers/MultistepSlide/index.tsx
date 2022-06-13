@@ -19,7 +19,7 @@ export default function MultistepSlide({
 	render?: (step: number, totalSteps: number) => React.ReactNode;
 	stepsCount: (() => number) | number;
 }) {
-	const multislideCxt = useContext(MultiSlideContext);
+	const multislideCxt = useContext(MultiSlideInnerContext);
 	const ctx = useContext(DeckContext);
 	const intDeckCtx = useContext(DeckContextInternal);
 
@@ -77,10 +77,10 @@ export default function MultistepSlide({
 	return (
 		// eslint-disable-next-line react/jsx-props-no-spreading
 		<Slide {...props}>
-			<MultiSlideInnerContext.Provider value={innerCtxValue}>
+			<MultiSlideContext.Provider value={innerCtxValue}>
 				{render && render(currentStep, totalSteps)}
 				{props.children}
-			</MultiSlideInnerContext.Provider>
+			</MultiSlideContext.Provider>
 		</Slide>
 	);
 }
