@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PresenterNotes from "@components/PresenterNotes";
-import DeckContext from "@contexts/DeckContext";
+import DeckContext, { DeckContextInternal } from "@contexts/DeckContext";
 import ReactDOM from "react-dom";
 
 function PresenterPortal({
@@ -18,6 +18,8 @@ function PresenterPortal({
 	showNavigationHUD?: boolean;
 }) {
 	const ctx = useContext(DeckContext);
+	const intCtx = useContext(DeckContextInternal);
+
 	if (!ctx.slides[ctx.currentSlideIndex]) return null;
 
 	const currentSlide = ctx.slides[ctx.currentSlideIndex];
@@ -30,7 +32,8 @@ function PresenterPortal({
 			talkTitle={talkTitle}
 			slide={currentSlide}
 			next={nextSlide}
-			notes={currentSlide.props.notes}
+			notes={currentSlide.props.notes || intCtx.getSlideInfo()?.notes}
+			multiSlideInfo={intCtx.getSlideInfo()?.multiSlideInfo}
 			current={ctx.currentSlideIndex + 1}
 			total={totalSlides}
 			parentStyles={mainStyles}
