@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  className="_slide_1aodf_1 diorama-slide "
+  style={{}}
+>
+  <div
+    className="diorama-content _content_1aodf_6"
+  >
+    Slide content
+  </div>
+</div>
+`;

@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<span
+  className="_highlight_1eco9_1 diorama-highlight "
+  style={
+    {
+      "backgroundColor": undefined,
+    }
+  }
+>
+  Highlighted text
+</span>
+`;

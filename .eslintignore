@@ -3,6 +3,8 @@ node_modules
 .babelrc
 .eslintrc.js
 .eslintignore
-vite.config.js
+vite.config.ts
+vitest.config.ts
 test/jest.setup.js
 postcss.config.js
+**/*.test.tsx

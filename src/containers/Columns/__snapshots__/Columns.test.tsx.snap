@@ -1,0 +1,28 @@
+// Vitest Snapshot v1
+
+exports[`renders correctly 1`] = `
+<div
+  className="_columns_ihsr5_1 diorama-columns"
+>
+  <div
+    className="_column_ihsr5_1 diorama-column  "
+    style={
+      {
+        "maxWidth": "50%",
+      }
+    }
+  >
+    Column 1
+  </div>
+  <div
+    className="_column_ihsr5_1 diorama-column  "
+    style={
+      {
+        "maxWidth": "50%",
+      }
+    }
+  >
+    Column 2
+  </div>
+</div>
+`;
