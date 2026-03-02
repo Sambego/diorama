@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`renders correctly 1`] = `
+<div>
+  <p
+    class="text diorama-text "
+  >
+    Text content
+  </p>
+</div>
+`;

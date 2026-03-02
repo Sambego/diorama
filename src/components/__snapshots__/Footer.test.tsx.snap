@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`renders correctly 1`] = `
+<div>
+  <footer
+    class="footer diorama-footer "
+  >
+    <div
+      class="left diorama-footer-left"
+    >
+      @sambego
+    </div>
+  </footer>
+</div>
+`;

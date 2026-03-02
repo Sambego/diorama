@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    class="columns diorama-columns"
+  >
+    <div
+      class="column diorama-column  "
+      style="max-width: 50%;"
+    >
+      Column 1
+    </div>
+    <div
+      class="column diorama-column  "
+      style="max-width: 50%;"
+    >
+      Column 2
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    class="diorama-swipe-container swipe"
+  >
+    <div
+      class="diorama diorama-deck deck "
+    >
+      <div
+        index="0"
+      >
+        Slide 1
+      </div>
+    </div>
+  </div>
+</div>
+`;

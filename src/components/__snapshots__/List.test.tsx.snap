@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`renders correctly 1`] = `
+<div>
+  <ul
+    class="list diorama-list diorama-list-unordered "
+  >
+    <li
+      class="item diorama-list-item"
+    >
+      one
+    </li>
+    <li
+      class="item diorama-list-item"
+    >
+      two
+    </li>
+  </ul>
+</div>
+`;

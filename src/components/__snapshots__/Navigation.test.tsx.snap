@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`renders correctly 1`] = `
+<div>
+  <nav
+    class="navigation diorama-navigation "
+  >
+    <ul
+      class="list"
+    >
+      <li
+        class="item"
+      >
+        <button
+          class="previous diorama-previous"
+          type="button"
+        >
+          Previous
+        </button>
+      </li>
+      <li
+        class="item"
+      >
+        <button
+          class="next diorama-next"
+          type="button"
+        >
+          Next
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    class="browser diorama-browser "
+  >
+    <header
+      class="header"
+    >
+      <div
+        class="traffic"
+      >
+        <span
+          class="red"
+        />
+        <span
+          class="yellow"
+        />
+        <span
+          class="green"
+        />
+      </div>
+      <input
+        class="address"
+        disabled=""
+        type="text"
+        value="https://sambego.be"
+      />
+    </header>
+    <iframe
+      class="iframe"
+      frameborder="0"
+      src="https://sambego.be"
+      title="preview browser"
+    />
+  </div>
+</div>
+`;

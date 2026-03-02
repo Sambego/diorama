@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    class="code diorama-code "
+  >
+    <header
+      class="header diorama-code-header"
+    >
+      <span
+        class="red"
+      />
+      <span
+        class="yellow"
+      />
+      <span
+        class="green"
+      />
+      <span
+        class="lang"
+      >
+        javascript
+      </span>
+    </header>
+    <div
+      class="snippet diorama-code-snippet"
+    >
+      <pre>
+        <code>
+          <span
+            class="token keyword"
+          >
+            const
+          </span>
+           
+          <span
+            class="token function-variable function"
+          >
+            foo
+          </span>
+           
+          <span
+            class="token operator"
+          >
+            =
+          </span>
+           
+          <span
+            class="token punctuation"
+          >
+            (
+          </span>
+          <span
+            class="token punctuation"
+          >
+            )
+          </span>
+           
+          <span
+            class="token operator"
+          >
+            =&gt;
+          </span>
+           
+          <span
+            class="token string"
+          >
+            'bar'
+          </span>
+          <span
+            class="token punctuation"
+          >
+            ;
+          </span>
+        </code>
+      </pre>
+    </div>
+  </div>
+</div>
+`;
