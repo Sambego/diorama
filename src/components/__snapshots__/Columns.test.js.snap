@@ -7,8 +7,8 @@ exports[`renders correctly 1`] = `
   <div
     className="column diorama-column  "
     style={
-      Object {
-        "maxWidth": "NaN%",
+      {
+        "maxWidth": "50%",
       }
     }
   >
@@ -17,8 +17,8 @@ exports[`renders correctly 1`] = `
   <div
     className="column diorama-column  "
     style={
-      Object {
-        "maxWidth": "NaN%",
+      {
+        "maxWidth": "50%",
       }
     }
   >
