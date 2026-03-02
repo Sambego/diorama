@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <nav
   className="navigation diorama-navigation "
-  style={Object {}}
+  style={{}}
 >
   <ul
     className="list"

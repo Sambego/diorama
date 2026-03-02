@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className="browser diorama-browser "
-  style={Object {}}
+  style={{}}
 >
   <header
     className="header"

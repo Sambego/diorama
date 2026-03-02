@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className="code diorama-code "
-  style={Object {}}
+  style={{}}
 >
   <header
     className="header diorama-code-header"
@@ -29,8 +29,8 @@ exports[`renders correctly 1`] = `
     <pre>
       <code
         dangerouslySetInnerHTML={
-          Object {
-            "__html": "<span class=\\"token keyword\\">const</span> <span class=\\"token function-variable function\\">foo</span> <span class=\\"token operator\\">=</span> <span class=\\"token punctuation\\">(</span><span class=\\"token punctuation\\">)</span> <span class=\\"token operator\\">=></span> <span class=\\"token string\\">'bar'</span><span class=\\"token punctuation\\">;</span>",
+          {
+            "__html": "<span class="token keyword">const</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">'bar'</span><span class="token punctuation">;</span>",
           }
         }
       />

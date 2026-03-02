@@ -1,106 +1,100 @@
-import React, { Component, cloneElement } from 'react';
+'use client';
+
+import React, { useState, useEffect, cloneElement } from 'react';
 import { renderToString } from 'react-dom/server';
 import PropTypes from 'prop-types';
 
 import style from './PresenterNotes.css';
 
-export default class PresenterNotes extends Component {
-  /* eslint-disable react/no-unused-prop-types */
-  static propTypes = {
-    notes: PropTypes.string,
-    slide: PropTypes.node.isRequired,
-    next: PropTypes.node,
-    parentStyles: PropTypes.objectOf(PropTypes.any),
-    origin: PropTypes.string.isRequired,
-  };
-  /* eslint-enable react/no-unused-prop-types */
+const PresenterNotes = ({
+  notes,
+  slide,
+  next,
+  parentStyles,
+  origin,
+  current,
+  total,
+}) => {
+  const [timerTotal, setTimerTotal] = useState(0);
+  const [timer, setTimer] = useState('00:00:00');
 
-  static defaultProps = {
-    notes: undefined,
-    next: undefined,
-    parentStyles: PropTypes.shape({}),
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimerTotal(prev => {
+        const newTotal = prev + 1;
+        const pad = n => (`${n}`.length > 1 ? `${n}` : `0${n}`);
+        setTimer(
+          `${pad(parseInt(newTotal / 3600, 10))}:${pad(parseInt(newTotal / 60, 10))}:${pad(
+            newTotal % 60,
+          )}`,
+        );
+        return newTotal;
+      });
+    }, 1000);
 
-  constructor(props) {
-    super(props);
+    return () => clearInterval(interval);
+  }, []);
 
-    this.state = { timerTotal: 0, timer: '00:00:00', ...this.props };
-    this.updateTimer = ::this.updateTimer;
-  }
+  const injectOrigin = htmlString =>
+    htmlString.replace(/src="([^"]*)"/gi, (match, media) => `src="${origin}${media}"`);
 
-  componentDidMount() {
-    window.setInterval(this.updateTimer, 1000);
-  }
+  const renderIframe = (title, content) => (
+    <iframe
+      title={title}
+      srcDoc={injectOrigin(
+        [...[...parentStyles].map(parentStyle => parentStyle.outerHTML), content].join(''),
+      )}
+      className={style.slide}
+    />
+  );
 
-  injectOrigin(htmlString) {
-    const { origin } = this.props;
-    return htmlString.replace(/src="([^"]*)"/gi, (match, media) => `src="${origin}${media}"`);
-  }
+  const currentSlide = renderIframe(
+    'current slide',
+    renderToString(cloneElement(slide, { className: 'diorama-presenter-preview' })),
+  );
 
-  updateTimer() {
-    const { timerTotal } = this.state;
-    const pad = toPad => (`${toPad}`.length > 1 ? `${toPad}` : `0${toPad}`);
-
-    this.setState(state => ({
-      ...state,
-      timerTotal: timerTotal + 1,
-      timer: `${pad(parseInt(timerTotal / 3600, 10))}:${pad(parseInt(timerTotal / 60, 10))}:${pad(
-        timerTotal % 60,
-      )}`,
-    }));
-  }
-
-  renderIframe(title, content) {
-    const { parentStyles } = this.props;
-
-    return (
-      <iframe
-        title={title}
-        srcDoc={this.injectOrigin(
-          [...[...parentStyles].map(parentStyle => parentStyle.outerHTML), content].join(''),
-        )}
-        className={style.slide}
-      />
-    );
-  }
-
-  render() {
-    const {
-      slide, next, notes, current, total, timer,
-    } = this.state;
-    const currentSlide = this.renderIframe(
-      'current slide',
-      renderToString(
-        cloneElement(slide, {
-          className: 'diorama-presenter-preview',
-        }),
-      ),
-    );
-    const nextSlide = this.renderIframe(
+  const nextSlide =
+    next &&
+    renderIframe(
       'next slide',
-      renderToString(
-        cloneElement(next, {
-          className: 'diorama-presenter-preview',
-        }),
-      ),
+      renderToString(cloneElement(next, { className: 'diorama-presenter-preview' })),
     );
 
-    return (
-      <div className={`${style.presenter} diorama-presenter`}>
-        <div className={style.slides}>
-          {currentSlide}
-          {next && nextSlide}
-        </div>
-        <div className={style.notes}>{notes && notes}</div>
-        <div className={style.meta}>
-          <span>{timer}</span>
-          <span>
-            {current}
-            /
-            {total}
-          </span>
-        </div>
+  return (
+    <div className={`${style.presenter} diorama-presenter`}>
+      <div className={style.slides}>
+        {currentSlide}
+        {next && nextSlide}
       </div>
-    );
-  }
-}
+      <div className={style.notes}>{notes && notes}</div>
+      <div className={style.meta}>
+        <span>{timer}</span>
+        <span>
+          {current}
+          /
+          {total}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+PresenterNotes.propTypes = {
+  notes: PropTypes.string,
+  slide: PropTypes.node.isRequired,
+  next: PropTypes.node,
+  parentStyles: PropTypes.objectOf(PropTypes.any),
+  origin: PropTypes.string.isRequired,
+  current: PropTypes.number,
+  total: PropTypes.number,
+};
+
+PresenterNotes.defaultProps = {
+  notes: undefined,
+  next: undefined,
+  parentStyles: {},
+  current: 1,
+  total: 1,
+};
+
+export default PresenterNotes;
