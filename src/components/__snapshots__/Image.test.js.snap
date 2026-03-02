@@ -8,7 +8,7 @@ exports[`renders correctly 1`] = `
     alt="image description"
     className="image diorama-image"
     src="test-file-stub"
-    style={Object {}}
+    style={{}}
   />
 </div>
 `;

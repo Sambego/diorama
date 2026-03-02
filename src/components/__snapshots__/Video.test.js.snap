@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className="video diorama-video-container"
-  style={Object {}}
+  style={{}}
 >
   <video
     autoPlay={false}

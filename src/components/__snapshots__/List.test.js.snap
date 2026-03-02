@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <ul
   className="list diorama-list diorama-list-unordered "
-  style={Object {}}
+  style={{}}
 >
   <li
     className="item diorama-list-item"

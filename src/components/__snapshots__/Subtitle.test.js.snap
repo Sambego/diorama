@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <h2
   className="subtitle diorama-subtitle "
-  style={Object {}}
+  style={{}}
 >
   Subtitle content
 </h2>

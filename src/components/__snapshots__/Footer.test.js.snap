@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <footer
   className="footer diorama-footer "
-  style={Object {}}
+  style={{}}
 >
   <div
     className="left diorama-footer-left"

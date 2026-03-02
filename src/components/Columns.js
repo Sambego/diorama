@@ -7,7 +7,7 @@ const Columns = ({ children, className }) => {
   const renderColumns = () => children.map((child, index) => cloneElement(child, {
     className: `${styles.column} diorama-column ${className} `,
     key: index,
-    style: { maxWidth: `${100 / children}%` },
+    style: { maxWidth: `${100 / children.length}%` },
   }));
 
   return <div className={`${styles.columns} diorama-columns`}>{renderColumns()}</div>;

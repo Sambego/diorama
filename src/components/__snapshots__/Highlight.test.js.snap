@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 <span
   className="highlight diorama-highlight "
   style={
-    Object {
+    {
       "backgroundColor": undefined,
     }
   }
