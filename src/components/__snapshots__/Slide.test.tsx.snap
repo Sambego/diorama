@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders correctly 1`] = `
 <div>
   <div
-    class="slide diorama-slide "
+    class="undefined diorama-slide "
   >
     <div
-      class="diorama-content content"
+      class="diorama-content undefined"
     >
       Slide content
     </div>

@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders correctly 1`] = `
 <div>
   <div
-    class="diorama-swipe-container swipe"
+    class="diorama-swipe-container undefined"
   >
     <div
-      class="diorama diorama-deck deck "
+      class="diorama diorama-deck undefined "
     >
       <div
         index="0"

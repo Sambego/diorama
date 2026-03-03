@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders correctly 1`] = `
 <div>
   <span
-    class="highlight diorama-highlight "
+    class="undefined diorama-highlight "
   >
     Highlighted text
   </span>

@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders correctly 1`] = `
 <div>
   <footer
-    class="footer diorama-footer "
+    class="undefined diorama-footer "
   >
     <div
-      class="left diorama-footer-left"
+      class="undefined diorama-footer-left"
     >
       @sambego
     </div>

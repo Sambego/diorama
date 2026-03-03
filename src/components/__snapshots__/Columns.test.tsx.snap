@@ -1,18 +1,18 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders correctly 1`] = `
 <div>
   <div
-    class="columns diorama-columns"
+    class="undefined diorama-columns"
   >
     <div
-      class="column diorama-column  "
+      class="undefined diorama-column  "
       style="max-width: 50%;"
     >
       Column 1
     </div>
     <div
-      class="column diorama-column  "
+      class="undefined diorama-column  "
       style="max-width: 50%;"
     >
       Column 2

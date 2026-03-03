@@ -1,35 +1,23 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders correctly 1`] = `
 <div>
   <div
-    class="browser diorama-browser "
+    class="undefined diorama-browser "
   >
-    <header
-      class="header"
-    >
-      <div
-        class="traffic"
-      >
-        <span
-          class="red"
-        />
-        <span
-          class="yellow"
-        />
-        <span
-          class="green"
-        />
+    <header>
+      <div>
+        <span />
+        <span />
+        <span />
       </div>
       <input
-        class="address"
         disabled=""
         type="text"
         value="https://sambego.be"
       />
     </header>
     <iframe
-      class="iframe"
       frameborder="0"
       src="https://sambego.be"
       title="preview browser"

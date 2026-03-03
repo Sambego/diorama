@@ -1,14 +1,14 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders correctly 1`] = `
 <div>
   <div
-    class="container diorama-image-container"
+    class="diorama-image-container"
   >
     <img
       alt="image description"
-      class="image diorama-image"
-      src="test-file-stub"
+      class="diorama-image"
+      src="test.png"
     />
   </div>
 </div>

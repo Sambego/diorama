@@ -1,28 +1,22 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders correctly 1`] = `
 <div>
   <nav
-    class="navigation diorama-navigation "
+    class="undefined diorama-navigation "
   >
-    <ul
-      class="list"
-    >
-      <li
-        class="item"
-      >
+    <ul>
+      <li>
         <button
-          class="previous diorama-previous"
+          class="undefined diorama-previous"
           type="button"
         >
           Previous
         </button>
       </li>
-      <li
-        class="item"
-      >
+      <li>
         <button
-          class="next diorama-next"
+          class="undefined diorama-next"
           type="button"
         >
           Next

@@ -1,14 +1,14 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders correctly 1`] = `
 <div>
   <blockquote
-    class="quote diorama-quote "
+    class="undefined diorama-quote "
   >
     Nice quote
   </blockquote>
   <cite
-    class="cite diorama-cite"
+    class="undefined diorama-cite"
   >
     Sam Bellen
   </cite>

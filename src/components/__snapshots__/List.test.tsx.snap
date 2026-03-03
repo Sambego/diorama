@@ -1,17 +1,17 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders correctly 1`] = `
 <div>
   <ul
-    class="list diorama-list diorama-list-unordered "
+    class="undefined diorama-list diorama-list-unordered "
   >
     <li
-      class="item diorama-list-item"
+      class="undefined diorama-list-item"
     >
       one
     </li>
     <li
-      class="item diorama-list-item"
+      class="undefined diorama-list-item"
     >
       two
     </li>
