@@ -1,6 +1,6 @@
 # Diorama
 
-Diorama is a set of React.js components to easily create an attractive and customisable presentation. All content will adjust to the available width of the screen, so you won't have some clipped slides when forced to present with a projector of lesser quality.
+Diorama is a set of React.js/next.js components to easily create an attractive and customisable presentation. All content will adjust to the available width of the screen, so you won't have some clipped slides when forced to present with a projector of lesser quality.
 
 Why would you create a presentation in React.js instead of powerpoint, keynote or Google Slides? You can add live demos, straight in your slides. Since every slide is a react component, there's no limit to what you can do.
 
