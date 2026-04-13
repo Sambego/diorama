@@ -20,7 +20,7 @@ const Image = ({
     styles.container,
     {
       [styles.full]: full,
-      [styles['full-bg']]: fullBg,
+      [styles.bg]: fullBg,
     },
     'diorama-image-container',
   );

@@ -32,7 +32,7 @@
   mix-blend-mode: multiply;
 }
 
-.full-bg {
+.bg {
   position: absolute;
   top: 0;
   bottom: 0;
