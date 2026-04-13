@@ -8,17 +8,19 @@ export interface ImageProps {
   className?: string;
   contain?: boolean;
   full?: boolean;
+  fullBg?: boolean;
   style?: React.CSSProperties;
   src: string;
 }
 
 const Image = ({
-  alt, src, style = {}, full = false, color, className = '', contain = false,
+  alt, src, style = {}, full = false, fullBg = false, color, className = '', contain = false,
 }: ImageProps) => {
   const containerClasses = classnames(
     styles.container,
     {
       [styles.full]: full,
+      [styles['full-bg']]: fullBg,
     },
     'diorama-image-container',
   );
