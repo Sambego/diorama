@@ -19,8 +19,8 @@ const Browser = ({ style = {}, className = '', url, children }: BrowserProps) =>
       </div>
       <input className={styles.address} type="text" value={url} disabled />
     </header>
-    {url ?? <iframe src={url} frameBorder="0" title="preview browser" className={styles.iframe} />}
-    {children ?? children}
+    {url && <iframe src={url} frameBorder="0" title="preview browser" className={styles.iframe} />}
+    {children && children}
   </div>
 );
 
