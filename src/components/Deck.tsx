@@ -35,7 +35,7 @@ const Deck = ({
   const [slide, setSlide] = useState(
     () => {
       if (typeof window === 'undefined' || !window.location) return 0;
-      return Number(window.location.pathname.split('/')[1]) || 0;
+      return Number(window.location.hash.replace('#', '')) || 0;
     },
   );
 
@@ -61,27 +61,26 @@ const Deck = ({
     [children],
   );
 
+  useEffect(() => {
+    window.location.hash = String(slide);
+  }, [slide]);
+
   const getPreviousSlide = useCallback(() => {
     setSlide(current => {
       if (current === 0) return current;
-      const next = current - 1;
-      window.history.pushState(null, '', String(next));
-      return next;
+      return current - 1;
     });
   }, []);
 
   const getNextSlide = useCallback(() => {
     setSlide(current => {
       if (current === children.length - 1) return current;
-      const next = current + 1;
-      window.history.pushState(null, '', String(next));
-      return next;
+      return current + 1;
     });
   }, [children.length]);
 
   const getSlide = useCallback((slideId: number) => {
     setSlide(slideId);
-    window.history.pushState(null, '', String(slideId));
   }, []);
 
   // Keyboard navigation
