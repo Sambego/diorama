@@ -4,11 +4,12 @@ import styles from './Browser.css';
 
 export interface BrowserProps {
   className?: string;
-  url: string;
+  url?: string;
   style?: React.CSSProperties;
+  children?: React.ReactNode;
 }
 
-const Browser = ({ style = {}, className = '', url }: BrowserProps) => (
+const Browser = ({ style = {}, className = '', url, children }: BrowserProps) => (
   <div style={style} className={`${styles.browser} diorama-browser ${className}`}>
     <header className={styles.header}>
       <div className={styles.traffic}>
@@ -18,7 +19,8 @@ const Browser = ({ style = {}, className = '', url }: BrowserProps) => (
       </div>
       <input className={styles.address} type="text" value={url} disabled />
     </header>
-    <iframe src={url} frameBorder="0" title="preview browser" className={styles.iframe} />
+    {url && <iframe src={url} frameBorder="0" title="preview browser" className={styles.iframe} />}
+    {children && children}
   </div>
 );
 
